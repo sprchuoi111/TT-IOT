@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="script.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<link rel="stylesheet" href="iconate.min.css">
+<script type="text/javascript" src="iconate.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+                                  
+                                    
+<link href="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.css" rel="stylesheet" />
+                                    
+<script src="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.js"></script>
+</head>
+<body>  
+
+<!-- Header -->
+<div class="header">  
+  <h1 class="animate__animated animate__backInDown">SMART HOME CONTROL</h1>
+  <p class="animate__animated animate__heartBeat">Providing <b>Super and Flexible </b>Control.</p>
+</div>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+    <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a> 
+    <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
+  </div>
+
+<!-- The flexible grid (content) -->
+<div class="row">
+    <div class="tab">
+        <button class="tablinks" onclick="openroom(event, 'Living-room')" id="defaultOpen"><i id="icon" class="fa fa-bars fa-lg"></i> Living room</button>
+        <button class="tablinks" onclick="openroom(event, 'Bed-room')">Bed room</button>
+        <button class="tablinks" onclick="openroom(event, 'Kit-chen')">Kitchen </button>
+        
+    </div>
+<div class="main">
+    <div id="Living-room" class="tabcontent">
+      <div class="container-item">
+        <div class ="container inside">
+            <h3 class ="atmosphere" style=" color: red;">Nhiệt độ: <span style="color: red;" id="nhietdo"></span> </h3>
+		        <h3 class ="atmosphere" style=" color: blue;">Độ ẩm: <span style="color: blue;" id="doam"></span> </h3>
+            <h3 class ="atmosphere" style=" color: yellowgreen;">Khí gas: <span style="color: yellowgreen;" id="khigas"></span> </h3>
+		        <h3 class ="atmosphere" style=" color: yellow;">Ánh sáng: <span style="color: yellow;" id="anhsang"></span> </h3>
+        </div>
+        
+        <div class ="item inside">
+            <div class="device">
+                <button>on</button>
+            </div>
+            <div class="device">
+                <button>on</button>
+            </div>
+            <div class="device">
+                <button>on</button>
+            </div>
+            <div class="device">
+              <button>on</button>
+          </div>
+          <div class="device">
+              <button>on</button>
+          </div>
+          <div class="device">
+              <button>on</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+      <div id="Bed-room" class="tabcontent">
+        <h3>Bed-room</h3>
+        <button>on</button>
+      </div>
+      
+      <div id="Kit-chen" class="tabcontent">
+        <h3>Kit-chen</h3>
+      </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <h2>Footer</h2>
+ 
+</div>
+
+</body>
+</html>
+
+
