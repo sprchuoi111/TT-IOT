@@ -25,7 +25,7 @@ body {
     background-color: #6511ae;
     overflow: auto;
   }
-  
+  /* Home contact */
 .navbar a {
     float: left;
     padding: 12px;
@@ -66,16 +66,16 @@ body {
 /* Main column */
 .main {
   flex: 70%;
-  background-color: white;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Fake image, just for this example */
-.fakeimg {
+/* .fakeimg {
   background-color: #aaa;
   width: 100%;
   padding: 20px;
-}
+} */
 
 /* Footer */
 .footer {
@@ -129,14 +129,42 @@ body {font-family: "Lato", sans-serif;}
 
 /* Style the tab content */
 .tabcontent {
-  float: left;
-  padding: 0px 12px;
+  /* float: left; */
+  padding: 0px 12px; 
   border: 1px solid #ccc;
   width: 100%;
   border-left: none;
   height: 500px;
 }
-#CircleSliderId-01 .rs-range-color  {
+.container-item{
+  background-color: blueviolet;
+  display: flex;
+  justify-content: space-between;
+  
+}
+.inside{
+  flex-direction: row;
+  flex-basis: 50%;
+  height: 500px;
+}
+
+.item{
+  display: flex;
+  /* flex-direction: column; */
+  background-color: yellow;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.device{
+ background-color: #1abc9c;
+ flex-basis: 30% ;
+  height: 100px;
+  
+  border-radius: 1rem;
+ /* flex-basis: 30%; */
+  
+}
+/* #CircleSlider derId-01 .rs-range-color  {
   background-color: #00FFF5;
 }
 #CircleSliderId-01 .rs-path-color  {
@@ -148,4 +176,5 @@ body {font-family: "Lato", sans-serif;}
 }
 #CircleSliderId-01 .rs-border  {
   border: 8px solid #382d5f;
-}
+} */
+
