@@ -11,8 +11,7 @@
 <link rel="stylesheet" href="iconate.min.css">
 <script type="text/javascript" src="iconate.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-                                    
-<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+                                  
                                     
 <link href="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.css" rel="stylesheet" />
                                     
@@ -38,29 +37,55 @@
         <button class="tablinks" onclick="openroom(event, 'Living-room')" id="defaultOpen"><i id="icon" class="fa fa-bars fa-lg"></i> Living room</button>
         <button class="tablinks" onclick="openroom(event, 'Bed-room')">Bed room</button>
         <button class="tablinks" onclick="openroom(event, 'Kit-chen')">Kitchen </button>
-    
+        
     </div>
 <div class="main">
     <div id="Living-room" class="tabcontent">
-        <h3>Living room</h3>
-        <p>London is the capital city of England.</p>
-        <div id="CircleSliderId-01" class="round-slider"></div>
+      <div class="container-item">
+        <div class ="container inside">
+            <h3 class ="atmosphere" style=" color: red;">Nhiệt độ: <span style="color: red;" id="nhietdo"></span> </h3>
+		        <h3 class ="atmosphere" style=" color: blue;">Độ ẩm: <span style="color: blue;" id="doam"></span> </h3>
+            <h3 class ="atmosphere" style=" color: yellowgreen;">Khí gas: <span style="color: yellowgreen;" id="khigas"></span> </h3>
+		        <h3 class ="atmosphere" style=" color: yellow;">Ánh sáng: <span style="color: yellow;" id="anhsang"></span> </h3>
+        </div>
+        
+        <div class ="item inside">
+            <div class="device">
+                <button>on</button>
+            </div>
+            <div class="device">
+                <button>on</button>
+            </div>
+            <div class="device">
+                <button>on</button>
+            </div>
+            <div class="device">
+              <button>on</button>
+          </div>
+          <div class="device">
+              <button>on</button>
+          </div>
+          <div class="device">
+              <button>on</button>
+          </div>
+        </div>
       </div>
+    </div>
       
       <div id="Bed-room" class="tabcontent">
         <h3>Bed-room</h3>
-        <p>Paris is the capital of France.</p> 
+        <button>on</button>
       </div>
       
       <div id="Kit-chen" class="tabcontent">
         <h3>Kit-chen</h3>
-        <p>Tokyo is the capital of Japan.</p>
       </div>
 </div>
 
 <!-- Footer -->
 <div class="footer">
   <h2>Footer</h2>
+ 
 </div>
 
 </body>
