@@ -1,4 +1,4 @@
-
+//------------- Tab Content main ----------------
 function openroom(evt, RoomName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -12,30 +12,75 @@ function openroom(evt, RoomName) {
   document.getElementById(RoomName).style.display = "block";
   evt.currentTarget.className += " active";
 };  
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
+nhietdo=document.getElementById("nhietdo");
+//-------- Circle slider --------
 function initial_CircleSlider_01(data){
     $("#CircleSliderId-01").roundSlider({
       radius: 90,
-      width: 10,
+      width: 20,
       handleSize: "+10",
-      sliderType: "range",
-      value: "0,60",
+      sliderType: "min-range",
+      value: 23,
       readOnly:false,
       max :100,
       svgMode:true,
-      change: function (args) {
-      var obj = $("#CircleSliderId-01").data("roundSlider");
-      $('#ircleSliderId-02').roundSlider('setValue',obj.getValue());
-    }
+      tooltipFormat: "checktem"
   });
   };
-  initial_CircleSlider_01(50);
-var iconElement = document.getElementById('icon');
-var options = {
-    from: 'fa-bed',
-    to: 'fa-arrow-right',
-    animation: 'zoomOut'
-};
+  function initial_CircleSlider_02(data){
+    $("#CircleSliderId-02").roundSlider({
+      radius: 90,
+      width: 20,
+      handleSize: "+10",
+      sliderType: "min-range",
+      value: 23,
+      readOnly:false,
+      max :100,
+      svgMode:true,
+      tooltipFormat: "checktem"
+  });
+  };
+initial_CircleSlider_01(20);
 
-iconate(iconElement, options);
+// ------------------ Check temp-------------
+function checktem(h)
+{ temp = "&#8451;";
+  var  val =h.value,speed;
+  if (val < 20) speed = "Too Cold";
+  else if (val < 34) speed = "Normal";
+  else if (val <40 ) speed = "Hot";
+  else speed = "Dangerous";
+  return val + "<span>" + temp +"</span>"+ "<div>" + speed + "<div>";
+}
+// var iconElement = document.getElementById('icon');
+ button_off=document.getElementsByClassName("slider");
+// var image = document.getElementById("airconditioner"), 
+//     button = document.getElementById("pause");
+
+// --------  Stop Fan button --------
+// button_off.onclick=function() {
+//   if(className=="fanrotate") {
+//     div.className = "fanrotate-stop";
+//   }
+//   else{
+//     div.className = "fanrotate";
+//   }
+//  };
+// // add active 
+
+// ---------- Slider Ngang -----------
+var SliderNgang = document.getElementById("slider2");
+SliderNgang.oninput = function(){
+  document.getElementById("Value").innerHTML = SliderNgang.value;
+  console.log("test");
+} ;
+//  ------ active toggle-------
+function myfunc(div) {
+  var className = div.getAttribute("class");
+  if(className=="fanrotate-stop") {
+    div.className = "fanrotate-stop";
+  }
+  else{
+    div.className = "fanrotate";
+  }
+};

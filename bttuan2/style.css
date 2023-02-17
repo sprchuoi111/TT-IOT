@@ -1,6 +1,8 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 /* Style the body */
@@ -18,7 +20,10 @@ body {
   background-image: url(2174887.jpg);
   background-repeat: no-repeat;
 }
-
+h1{
+  color: #ba94e2;
+  
+}
 /* Style the top navigation bar */
 .navbar {
     width: 100%;
@@ -130,51 +135,309 @@ body {font-family: "Lato", sans-serif;}
 /* Style the tab content */
 .tabcontent {
   /* float: left; */
-  padding: 0px 12px; 
+
   border: 1px solid #ccc;
   width: 100%;
   border-left: none;
   height: 500px;
 }
 .container-item{
-  background-color: blueviolet;
+  background-color: rgb(235, 234, 235);
   display: flex;
   justify-content: space-between;
   
 }
-.inside{
+.container{
+  background-image: url(interior-design-with-photoframes-couch.jpg);
+  background-size: 100% 100%;
+}
+.inside{  
   flex-direction: row;
-  flex-basis: 50%;
-  height: 500px;
+  flex-basis: 70%;
+  height:700px;
 }
 
 .item{
   display: flex;
   /* flex-direction: column; */
-  background-color: yellow;
+  background-color: rgb(182, 233, 244);
   justify-content: space-between;
   flex-wrap: wrap;
-}
-.device{
- background-color: #1abc9c;
- flex-basis: 30% ;
-  height: 100px;
+  padding: 10px 0 0 10px;   
+  margin: 0 auto;
   
+}
+/*-------------- device bed room ----------------*/
+.device-bed-room{
+  background-color: #ebf3f0cc;
+   height: 190px;
+   flex-basis:40% ;
+   border-radius: 1rem;
+   gap: 5px;
+   box-shadow: 5px 8px;
+   text-align: center;
+   margin: 10px;
+  /* flex-basis: 30%; */
+}
+
+/*-------------- device living room ----------------*/
+.device-living-room{
+ background-color: #ebf3f0cc;
+  height: 200px;
+  flex-basis:45% ;
   border-radius: 1rem;
+  gap: 5px;
+  box-shadow: 5px 8px;
+  text-align: center;
+  margin: 10px;
  /* flex-basis: 30%; */
   
 }
-/* #CircleSlider derId-01 .rs-range-color  {
-  background-color: #00FFF5;
+*, *:before, *:after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
-#CircleSliderId-01 .rs-path-color  {
-  background-color: #382d5f;
-  border-radius: 0;
+
+
+.airconditioner{
+  display: block;
+  width: 120px;
+  height: 90px;
+  margin: 0 auto;
+  background: url(https://d14tal8bchn59o.cloudfront.net/d7vzydNMmjeb0hclwZJVKtTOrygMPfN5ypnEXrUCgtY/w:400/plain/https://02f0a56ef46d93f03c90-22ac5f107621879d5667e0d7ed595bdb.ssl.cf2.rackcdn.com/sites/27751/photos/1059786/ac_original.gif);
+  background-size: 100%;
+
+
+
+}
+.fanrotate{
+  display: block;
+  width: 130px;
+  height: 130px;
+  margin: 20px auto;
+  background: url(fanrotate.gif);
+  background-size: 100%;
+
+}
+.fanrotate-stop{
+  display: block;
+  width: 130px;
+  height: 130px;
+  margin: 20px auto;
+  background: url(fanstatic.PNG);
+  background-size: 100%;
+
+
+}
+.active1 {
+  display: block;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto;
+  background: url(fanstatic.PNG);
+  background-size: 100%;
+}
+
+.airconditioner:hover{
+  display: block;
+  width: 120px;
+  height: 90px;
+  background: url(fanstop.png);
+  background-size: 100%;
+} 
+input {
+	font-size: 35px;
+  align-items: center;
+
+/*----Switch button ----- */
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* --------------- Rounded sliders -------------*/  
+#CircleSliderId-01 .rs-tooltip  {
+  font-size: 15px;
+}
+#CircleSliderId-01 .rs-tooltip div  {
+  text-align: center;
+  background: rgb(85, 66, 193);
+  color: white;
+  border-radius: 4px;
+  padding: 2px 2px 2px 2px;
 }
 #CircleSliderId-01 .rs-handle  {
+  background-color: #00FFF5;
+  
+}
+#CircleSliderId-01 .rs-range-color  {
+  background-color: #00FFF5;
+  stroke-width: 4px;
+
+} 
+
+#CircleSliderId-01.rs-path-color  {
+  background-color: #382d5f;
+  border-radius: 0;
+
+}
+#CircleSliderId-01{
+  margin: 5px 0 0 40px;
+  stroke-width: 5px;
+  stroke:#0b0b0b;
+}
+/* #CircleSliderId-02 .rs-tooltip  {
+  font-size: 15px;
+} */
+/* #CircleSliderId-02 .rs-tooltip div  {
+  text-align: center;
+  background: rgb(85, 66, 193);
+  color: white;
+  border-radius: 4px;
+  padding: 2px 2px 2px 2px;
+}
+#CircleSliderId-02 .rs-handle  {
   background-color: #00FFF5;
 }
 #CircleSliderId-01 .rs-border  {
   border: 8px solid #382d5f;
+}
+#CircleSliderId-02{
+  margin: 90px 0 0 40px;
 } */
+/*---- Button LED ----- */
+.l {
+	background-color: rgba(0,0,0,0.7);
+	border-radius: 0.75em;
+	box-shadow: 0.125em 0.125em 0 0.125em rgba(0,0,0,0.3) inset;
+	color: #fdea7b;
+	display: inline-flex;
+	align-items: center;
+	margin: 40px;
+	padding: 0.15em;
+	width: 3em;
+	height: 1.5em;
+	transition: background-color 0.1s 0.3s ease-out, box-shadow 0.1s 0.3s ease-out;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+.l:before, .l:after {
+	content: "";
+	display: block;
+}
+.l:before {
+	background-color: #d7d7d7;
+	border-radius: 50%;
+	width: 1.2em;
+	height: 1.2em;
+	transition: background-color 0.1s 0.3s ease-out, transform 0.3s ease-out;
+	z-index: 1;
+}
+.l:after {
+	background:
+		linear-gradient(transparent 50%, rgba(0,0,0,0.15) 0) 0 50% / 50% 100%,
+		repeating-linear-gradient(90deg,#bbb 0,#bbb,#bbb 20%,#999 20%,#999 40%) 0 50% / 50% 100%,
+		radial-gradient(circle at 50% 50%,#888 25%, transparent 26%);
+	background-repeat: no-repeat;
+	border: 0.25em solid transparent;
+	border-left: 0.4em solid #d8d8d8;
+	border-right: 0 solid transparent;
+	transition: border-left-color 0.1s 0.3s ease-out, transform 0.3s ease-out;
+	transform: translateX(-22.5%);
+	transform-origin: 25% 50%;
+	width: 1.2em;
+	height: 1em;
+}
+/* Checked */
+.l:checked {
+	background-color: rgba(0,0,0,0.45);
+	box-shadow: 0.125em 0.125em 0 0.125em rgba(0,0,0,0.1) inset;
+}
+.l:checked:before {
+	background-color: currentColor;
+	transform: translateX(125%)
+}
+.l:checked:after {
+	border-left-color: currentColor;
+	transform: translateX(-2.5%) rotateY(180deg);
+}
+/* Other States */
+.l:focus {
+	/* Usually an anti-A11Y practice but set to remove an annoyance just for this demo */
+	outline: 0;
+}
 
+/*---- Slider Ngang ----- */
+#slider1{
+
+  width: 70%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+#slider2{
+  border-radius: 34px;
+} 
+
+#hum-tem{
+  flex-basis: 100%;
+}
+
+
+/*---- Slider Tron ----*/
+.round-slider{
+ 
+}
