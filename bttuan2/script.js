@@ -27,7 +27,7 @@ function initial_CircleSlider_01(data){
       tooltipFormat: "checktem"
   });
   };
-  function initial_CircleSlider_02(data){
+function initial_CircleSlider_02(data){
     $("#CircleSliderId-02").roundSlider({
       radius: 90,
       width: 20,
@@ -77,7 +77,7 @@ SliderNgang.oninput = function(){
 //  ------ active toggle-------
 function myfunc(div) {
   var className = div.getAttribute("class");
-  if(className=="fanrotate-stop") {
+  if(className=="fanrotate") {
     div.className = "fanrotate-stop";
   }
   else{
