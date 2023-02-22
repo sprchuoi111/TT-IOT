@@ -19,7 +19,6 @@
       href="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.css"
       rel="stylesheet"
     />
-
     <script src="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.js"></script>
   </head>
   <body onload="document.getElementById('defaultOpen').click();">
@@ -38,8 +37,8 @@
     </div>
 
     <!-- The flexible grid (content) -->
-    <div class="row">
-      <div class="tab">
+    <div class="row" >
+      <div class="tab" id="tabcontrol">
         <button
           class="tablinks active"
           onclick="openroom(event, 'Living-room')"
@@ -53,95 +52,242 @@
         <button class="tablinks" onclick="openroom(event, 'Kit-chen')">
           Kitchen
         </button>
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+        
       </div>
- <!-- Living room  (content) -->
-      <div class="main">
+      <!-- Living room  (content) -->
+      <div class="main" onload="document.getElementById('switch-lr').click();">
         <div id="Living-room" class="tabcontent">
           <div class="container-item">
-            <div class="container inside"></div>
+            <div class="container-bedroom">
+              <div class="img-livingroom"></div>
+              <div class="device-bed">
+                <div class="control-connect">
+                  <input type="checkbox" id="wifi" hidden>
+
+                  <label for="wifi" id="iconwifi">
+                    <i class="fa fa-wifi" 
+                      style="font-size: 20px; color: rgb(49, 156, 146)"></i>
+                  </label>
+                  <input id="lock" type="checkbox" hidden>
+                  <label for="lock" id="iconlock">
+                    <i
+                      class="fa fa-fw fa-lock" id="iconlock"
+                      style="font-size: 20px; color: rgb(49, 156, 146)"
+                    ></i>
+                  </label>
+                  </input>
+                </div>
+              </div>
+              <div class="device-bed"></div>
+              <div class="device-bed">
+                <div class="hum-tem">
+                  <div id="CircleSliderId-01" class="round-slider1"></div>
+                </div>
+              </div>
+            </div>
 
             <div class="item inside">
               <div class="device-living-room">
-                <h1>Desk Lamp</h1>    
-                <input class="l" type="checkbox" />
+                <h2>Desk Lamp</h2>
+                <input class="l" type="checkbox" id="switch-dlight-lr" />
               </div>
               <div class="device-living-room">
-                <div id="airconditioner" class="airconditioner"></div>
-                <div id="Value">21</div>
-                <input
-                  type="range"
-                  min="15"
-                  max="32"
-                  value="20"
-                  id="slider2"
-                />
-              </div>
-              <div class="device-living-room">
-                <h1>Hall Lamp</h1>
-                <input class="l" type="checkbox" />
-              </div>
-              <div class="device-living-room">
-                <div id="fanrotate" class="fanrotate"></div>
-                <div>
+                <div class="status-button">
+                  <h3 id="statusbutton-air-lr">OFF</h3>
                   <label class="switch">
-                    <input type="checkbox" />
-                    <span class="slider"></span>
+                    <input type="checkbox" id="switch-air-lr" />
+                    <span class="slider round"></span>
                   </label>
                 </div>
+                <div class="airconditioner"></div>
+                <div>
+                  <h3>Air conditioner</h3>
+                </div>
+                <div id="Value-air-lr">None</div>
+                <input type="range" min="15" max="32" value="20" id="slider2-lr" />
+              </div>
+              <div class="device-living-room">
+                <h2>Hall Lamp</h2>
+                <input class="l" type="checkbox" id="switch-hlight-lr" />
+              </div>
+              <div class="device-living-room">
+                <h2>Fan</h2>
+                <div onclick="offFan_lr(this)" class="fanrotate"></div>
               </div>
             </div>
           </div>
         </div>
-<!-- Bed room  (content) -->
+        <!-- Bed room  (content) -->
         <div id="Bed-room" class="tabcontent">
           <div class="container-item">
-            <div class="container">
+            <div class="container-bedroom">
+              <div class="img-bedroom"></div>
+              <div class="device-bed">
+                <div class="control-connect">
+                  <button id="wifi">
+                    <i
+                      class="fa fa-wifi"
+                      style="font-size: 20px; color: rgb(49, 156, 146)"
+                    ></i>
+                  </button>
+                  <button id="lock">
+                    <i
+                      class="fa fa-fw fa-lock"
+                      style="font-size: 20px; color: rgb(49, 156, 146)"
+                    ></i>
+                  </button>
+                </div>
+              </div>
               <div class="device-bed"></div>
               <div class="device-bed">
-              <div class="hum-tem">
-                <div id="CircleSliderId-01" class="round-slider1"></div>
+                <div class="hum-tem">
+                  <div id="CircleSliderId-02" class="round-slider1"></div>
+                </div>
               </div>
-            </div>         
             </div>
 
             <div class="item inside">
               <div class="device-bed-room">
-                <h1>Desk Lamp</h1>
-                <input class="l" type="checkbox" />
+                <h2>Desk Lamp</h2>
+                <input class="l" type="checkbox"  id="switch-den1-br"  />
               </div>
               <div class="device-bed-room">
-                <h1>Hall Lamp</h1>
-                <input class="l" type="checkbox" />
+                <h2>Hall Lamp</h2>
+                <input class="l" type="checkbox" id="switch-den2-br" />
               </div>
               <div class="device-bed-room">
-                <div id="airconditioner" class="airconditioner"></div>
-                <div id="sliderNgangValue">5</div>
-                <input
-                  type="range"
-                  min="15"
-                  max="32"
-                  value="20"
-                  id="slider1"
-                />
+                <div class="status-button">
+                  <h3 id="statusbutton-air-br">OFF</h3>
+                  <label class="switch">
+                    <input type="checkbox" id="switch-air-br" />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+                <div class="airconditioner"></div>
+                <div>
+                  <h3>Air conditioner</h3>
+                </div>
+                <div id="Value-air-br">None</div>
+                <input type="range" min="15" max="32" value="20" id="slider2-br" />
               </div>
               <div class="device-bed-room">
-                  <h1>Fan</h1>
-                  <div  id="div" onclick="myfunc(this)"   class="fanrotate" ></div>
-                  <div >  
+                <h2>Fan</h2>
+                <div id="div" onclick="myfunc(this)" class="fanrotate"></div>
+                <div>
                   <!-- <label class="switch" >
                     <input type="checkbox" />
                     <span class="slider"  ></span>
                   </label> -->
                 </div>
               </div>
-              <!-- <div class="device-bed-room" id="hum-tem">
-                <div id="CircleSliderId-01" class="round-slider1"></div>
-                <div id="CircleSliderId-02" class="round-slider2"></div>
-              </div> -->
+              <div class="device-bed-room">
+                <div class="status-button">
+                  <h3 id="statusbutton-tv-br">OFF</h3>
+                  <label class="switch">
+                    <input type="checkbox" id="switch-tv-br"/>
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+                <div class="TV"></div>
+                <div>
+                  <h2>Television</h2>
+                </div>
+              </div>
             </div>
+
+            <!-- Kit chen -->
             <div id="Kit-chen" class="tabcontent">
               <h3>Kit-chen</h3>
+              <div class="container-item">
+                <div class="container-bedroom">
+                  <div class="img-bedroom"></div>
+                  <div class="device-bed">
+                    <div class="control-connect">
+                      <button id="wifi">
+                        <i
+                          class="fa fa-wifi"
+                          style="font-size: 20px; color: rgb(49, 156, 146)"
+                        ></i>
+                      </button>
+                      <button id="lock">
+                        <i
+                          class="fa fa-fw fa-lock"
+                          style="font-size: 20px; color: rgb(49, 156, 146)"
+                        ></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="device-bed"></div>
+                  <div class="device-bed">
+                    <div class="hum-tem">
+                      <div id="CircleSliderId-02" class="round-slider1"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="item inside">
+                  <div class="device-bed-room">
+                    <h2>Desk Lamp</h2>
+                    <input class="l" type="checkbox" />
+                  </div>
+                  <div class="device-bed-room">
+                    <h2>Hall Lamp</h2>
+                    <input class="l" type="checkbox" />
+                  </div>
+                  <div class="device-bed-room">
+                    <div class="status-button">
+                      <h3>ON</h3>
+                      <label class="switch">
+                        <input type="checkbox" id="" />
+                        <span class="slider round"></span>
+                      </label>
+                    </div>
+                    <div class="airconditioner"></div>
+                    <div>
+                      <h3>Air conditioner</h3>
+                    </div>
+                    <div id="Value">21</div>
+                    <input
+                      type="range"
+                      min="15"
+                      max="32"
+                      value="20"
+                      id="slider2"
+                    />
+                  </div>
+                  <div class="device-bed-room">
+                    <h2>Fan</h2>
+                    <div
+                      id="div"
+                      onclick="myfunc(this)"
+                      class="fanrotate"
+                    ></div>
+                    <div>
+                      <!-- <label class="switch" >
+                        <input type="checkbox" />
+                        <span class="slider"  ></span>
+                      </label> -->
+                    </div>
+                  </div>
+                  <div class="device-bed-room">
+                    <div class="status-button">
+                      <h3>ON</h3>
+                      <label class="switch">
+                        <input type="checkbox" />
+                        <span class="slider round"></span>
+                      </label>
+                    </div>
+                    <div class="TV"></div>
+                    <div>
+                      <h2>Television</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            
           </div>
         </div>
       </div>
@@ -150,6 +296,8 @@
     <!-- <div class="footer">
       <h2>Footer</h2>
     </div> -->
-    <script src="script.js"></script>  
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script> 
+    <script src="script.js"></script>
   </body>
 </html>
