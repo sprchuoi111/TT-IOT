@@ -16,7 +16,19 @@ function openNav() {
   document.getElementById("tabcontrol").style.width = "250px";
   
 };
-
+const btn = document.getElementById('expand');
+const box = document.getElementById('tabcontrol');
+btn.addEventListener('change',function(){
+  if(this.checked)
+  {
+    // 👇️ hide button (still takes up space on page)
+    box.style.visibility = 'hidden';
+    console.log("hidden");
+// 👇️ show div
+  }
+  else
+  box.style.visibility = 'visible'; 
+});
 
 nhietdo=document.getElementById("nhietdo");
 //-------- Circle slider --------
@@ -30,8 +42,10 @@ function initial_CircleSlider_01(temp_lr){
       sliderType: "min-range",
       value: temp_lr,
       readOnly:true,
-      max :100,
+      max :60,
       svgMode:true,
+      startAngle: 315,
+      circleShape: "pie",
       tooltipFormat: "checktem"
   });
   };
@@ -44,6 +58,8 @@ function initial_CircleSlider_02(temp_br){
       value: 23,
       readOnly:true,
       max :100,
+      startAngle: 315,
+      circleShape: "pie",
       svgMode:true,
       tooltipFormat: "checktem"
   });
@@ -280,13 +296,11 @@ var switch_wifi=document.getElementById("wifi");
 switch_wifi.addEventListener("change",function(){
   if(this.checked)
   {
-    background_wifi.style.background="#FFC745";
     console.log("Wifi ON");
     firebase.database().ref("/Phong_Khach").update({
       "Wifi": "ON"})
   }
   else {
-  background_wifi.style.background="#fff"
   console.log("Wifi OFF");
   firebase.database().ref("/Phong_Khach").update({
     "Wifi": "OFF"})
@@ -299,7 +313,6 @@ switch_lock.addEventListener("change",function(){
   if(this.checked)
   {
     background_lock.style.background="#FFC745";
-      icon_lock.style.color="FFC745";
     console.log("Lock ON");
     firebase.database().ref("/Phong_Khach").update({
       "Lock": "ON"})

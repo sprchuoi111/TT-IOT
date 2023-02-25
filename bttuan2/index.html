@@ -5,20 +5,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="style.css" />
+    <!-- <link
+      rel="stylesheet"
+      href="https://kit.fontawesome.com/2d2edda896.css"
+      crossorigin="anonymous"
+    /> -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
 
     <link
       href="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.css"
       rel="stylesheet"
     />
+
     <script src="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.js"></script>
   </head>
   <body onload="document.getElementById('defaultOpen').click();">
@@ -37,23 +44,34 @@
     </div>
 
     <!-- The flexible grid (content) -->
-    <div class="row" >
+    <div class="row">
       <div class="tab" id="tabcontrol">
         <button
           class="tablinks active"
           onclick="openroom(event, 'Living-room')"
           id="defaultOpen"
         >
-          <i id="icon" class="fa fa-bars fa-lg"></i> Living room
+          <i class="fa-solid fa-people-roof"></i>
+          <h3>Living room</h3>
         </button>
         <button class="tablinks" onclick="openroom(event, 'Bed-room')">
-          Bed room
+          <i class="fa-solid fa-bed"></i>
+          <h3>Bed room</h3>
         </button>
         <button class="tablinks" onclick="openroom(event, 'Kit-chen')">
-          Kitchen
+          <i class="fa-solid fa-bowl-food"></i>
+          <h3>Kit chen</h3>
         </button>
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-        
+      </div>
+      <div>
+        <input id="expand" type="checkbox" hidden />
+        <label for="expand">
+          <i
+            class="fa-solid fa-arrow-left"
+            id="icon_expand"
+            style="font-size: 40px"
+          ></i>
+        </label>
       </div>
       <!-- Living room  (content) -->
       <div class="main" onload="document.getElementById('switch-lr').click();">
@@ -63,20 +81,22 @@
               <div class="img-livingroom"></div>
               <div class="device-bed">
                 <div class="control-connect">
-                  <input type="checkbox" id="wifi" hidden>
+                  <input type="checkbox" id="wifi" hidden />
 
                   <label for="wifi" id="iconwifi">
-                    <i class="fa fa-wifi" 
-                      style="font-size: 20px; color: rgb(49, 156, 146)"></i>
-                  </label>
-                  <input id="lock" type="checkbox" hidden>
-                  <label for="lock" id="iconlock">
                     <i
-                      class="fa fa-fw fa-lock" id="iconlock"
+                      class="fa-solid fa-wifi"
                       style="font-size: 20px; color: rgb(49, 156, 146)"
                     ></i>
                   </label>
-                  </input>
+
+                  <input id="lock" type="checkbox" hidden />
+                  <label for="lock" id="iconlock">
+                    <i
+                      class="fa-solid fa-house-lock"
+                      style="font-size: 20px; color: rgb(49, 156, 146)"
+                    ></i>
+                  </label>
                 </div>
               </div>
               <div class="device-bed"></div>
@@ -105,7 +125,13 @@
                   <h3>Air conditioner</h3>
                 </div>
                 <div id="Value-air-lr">None</div>
-                <input type="range" min="15" max="32" value="20" id="slider2-lr" />
+                <input
+                  type="range"
+                  min="15"
+                  max="32"
+                  value="20"
+                  id="slider2-lr"
+                />
               </div>
               <div class="device-living-room">
                 <h2>Hall Lamp</h2>
@@ -150,7 +176,7 @@
             <div class="item inside">
               <div class="device-bed-room">
                 <h2>Desk Lamp</h2>
-                <input class="l" type="checkbox"  id="switch-den1-br"  />
+                <input class="l" type="checkbox" id="switch-den1-br" />
               </div>
               <div class="device-bed-room">
                 <h2>Hall Lamp</h2>
@@ -169,7 +195,13 @@
                   <h3>Air conditioner</h3>
                 </div>
                 <div id="Value-air-br">None</div>
-                <input type="range" min="15" max="32" value="20" id="slider2-br" />
+                <input
+                  type="range"
+                  min="15"
+                  max="32"
+                  value="20"
+                  id="slider2-br"
+                />
               </div>
               <div class="device-bed-room">
                 <h2>Fan</h2>
@@ -185,7 +217,7 @@
                 <div class="status-button">
                   <h3 id="statusbutton-tv-br">OFF</h3>
                   <label class="switch">
-                    <input type="checkbox" id="switch-tv-br"/>
+                    <input type="checkbox" id="switch-tv-br" />
                     <span class="slider round"></span>
                   </label>
                 </div>
@@ -195,10 +227,10 @@
                 </div>
               </div>
             </div>
+            1
 
             <!-- Kit chen -->
             <div id="Kit-chen" class="tabcontent">
-              <h3>Kit-chen</h3>
               <div class="container-item">
                 <div class="container-bedroom">
                   <div class="img-bedroom"></div>
@@ -286,8 +318,6 @@
                 </div>
               </div>
             </div>
-
-            
           </div>
         </div>
       </div>
@@ -296,8 +326,12 @@
     <!-- <div class="footer">
       <h2>Footer</h2>
     </div> -->
+    <script
+      src="https://kit.fontawesome.com/2d2edda896.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
