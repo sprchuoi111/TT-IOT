@@ -16,18 +16,21 @@ function openNav() {
   document.getElementById("tabcontrol").style.width = "250px";
   
 };
-const btn = document.getElementById('expand');
-const box = document.getElementById('tabcontrol');
+const btn = document.getElementById("expand");
+const header = document.getElementById("header");
 btn.addEventListener('change',function(){
   if(this.checked)
   {
     // 👇️ hide button (still takes up space on page)
-    box.style.visibility = 'hidden';
+    header.id = header.id.replace("header","header_roll");
     console.log("hidden");
 // 👇️ show div
   }
   else
-  box.style.visibility = 'visible'; 
+  {a
+  header.id = header.id.replace("header_roll","header");
+    console.log("hidden");
+  }
 });
 
 nhietdo=document.getElementById("nhietdo");
@@ -36,7 +39,7 @@ var temp_lr=21;
 var temp_br=21;
 function initial_CircleSlider_01(temp_lr){
     $("#CircleSliderId-01").roundSlider({
-      radius: 90,
+      radius: 80,
       width: 20,
       handleSize: "+10",
       sliderType: "min-range",
@@ -46,22 +49,31 @@ function initial_CircleSlider_01(temp_lr){
       svgMode:true,
       startAngle: 315,
       circleShape: "pie",
-      tooltipFormat: "checktem"
+      tooltipFormat: "checktem",
+      rangeColor: "black",
+      pathColor: "white ",
+      borderColor: "black",
+      lineCap: "round",
   });
   };
 function initial_CircleSlider_02(temp_br){
     $("#CircleSliderId-02").roundSlider({
-      radius: 90,
+      radius: 80,
       width: 20,
+      circleShape: "pie",
       handleSize: "+10",
       sliderType: "min-range",
-      value: 23,
+      value: 23,  
       readOnly:true,
       max :100,
       startAngle: 315,
-      circleShape: "pie",
+
       svgMode:true,
-      tooltipFormat: "checktem"
+      tooltipFormat: "checktem",
+      rangeColor: "rgb(22 6 247 / 51%) 0px 5px 55px",
+      pathColor: "rgb(22 6 247 / 51%) 0px 5px 55px",
+      borderColor: "black",
+      lineCap: "round"
   });
   };
 initial_CircleSlider_02(20);
@@ -193,51 +205,45 @@ switch1.addEventListener("change",function(){
     "TV": "OFF"})
   }
 });
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCvgvxH2-_45zPOSHjJjhRVPUTBgJxB2Xg",
-  authDomain: "project1-11612.firebaseapp.com",
-  databaseURL: "https://project1-11612-default-rtdb.firebaseio.com",
-  projectId: "project1-11612",
-  storageBucket: "project1-11612.appspot.com",
-  messagingSenderId: "1024826906949",
-  appId: "1:1024826906949:web:a0e9cb94bb4a960966862c"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-
-// Auto load Temperature-------------------------
-firebase.database().ref("/Phong_Ngu/Maylanh_temp").on("value",function(snapshot){
-  var nd = snapshot.val();  
-  document.getElementById("Value-air-br").innerHTML = nd;
-  console.log(nd);
+var status_fr=document.getElementById("status-rf");
+var switch_fr=document.getElementById("switch-fr-kc");
+switch_fr.addEventListener("change",function(){
+  if(this.checked)
+  {  status_fr.id = status_fr.id.replace("status-rf","status-rf-active");
+    status_fr.innerHTML="ON";
+    sliderngang.disabled=false; 
+    firebase.database().ref("/Phong_Bep").update({
+      "Tu_lanh": "ON"})
+  }
+  else {
+    status_fr.id = status_fr.id.replace("status-rf-active","status-rf");
+    status_fr.innerHTML="OFF";
+  sliderngang.disabled=true;
+  firebase.database().ref("/Phong_Bep").update({
+    "Tu_lanh": "OFF"})
+  }
 });
-firebase.database().ref("/Phong_Khach/nhietdo").on("value",function(snapshot){
-  var nd = snapshot.val();  
-  temp_lr= nd;
-  initial_CircleSlider_01(temp_lr);
-  console.log(nd);
+// Connect status
+// ---------------Wifi---------------
+var background_wifi=document.getElementById("iconwifi");
+var switch_wifi=document.getElementById("wifi");
+switch_wifi.addEventListener("change",function(){
+  if(this.checked)
+  { 
+    background_wifi.style.color="yellow";
+    background_wifi.style.textShadow="rgb(128 0 64) 2px 0px 12px, rgb(77 0 38 / 100%) 1px 1px 0px, rgb(255 0 43) 3px 0px 3px";
+    console.log("Wifi ON");
+    firebase.database().ref("/Phong_Khach").update({
+      "Wifi": "ON"})
+  }
+  else {
+    background_wifi.style.color="black";
+    background_wifi.style.textShadow="";
+  console.log("Wifi OFF");
+  firebase.database().ref("/Phong_Khach").update({
+    "Wifi": "OFF"})
+  }
 });
-firebase.database().ref("/Phong_Ngu/nhietdo").on("value",function(snapshot){
-  var nd = snapshot.val();
-  temp_br=nd;  
-  initial_CircleSlider_02(temp_br);
-  console.log(nd);
-});
-firebase.database().ref("/Phong_Khach/Maylanh_temp").on("value",function(snapshot){
-  var nd = snapshot.val();  
-  document.getElementById("Value-air-lr").innerHTML = nd;
-  console.log(nd);
-});
-// Auto load switch
-
-// firebase.database().ref("/Phong_Khach/DoAm").on("value",function(snapshot){
-//   var nd = snapshot.val();  
-//   document.getElementById("DoAm").innerHTML = nd;
-//   console.log(nd);
-// });
 //----- Light Living Room ----
 var switch1=document.getElementById("switch-dlight-lr");
 switch1.addEventListener("change",function(){
@@ -289,44 +295,110 @@ switch1.addEventListener("change",function(){
     "Den2": "OFF"})
   }
 });
-// Connect status
-// ---------------Wifi---------------
-var background_wifi=document.getElementById("iconwifi");
-var switch_wifi=document.getElementById("wifi");
-switch_wifi.addEventListener("change",function(){
-  if(this.checked)
-  {
-    console.log("Wifi ON");
-    firebase.database().ref("/Phong_Khach").update({
-      "Wifi": "ON"})
-  }
-  else {
-  console.log("Wifi OFF");
-  firebase.database().ref("/Phong_Khach").update({
-    "Wifi": "OFF"})
-  }
-});
-var icon_lock=document.getElementById("iconlock_is");
-var background_lock=document.getElementById("iconlock");
+
+var background_lock=document.getElementById("lock");
 var switch_lock=document.getElementById("lock");
 switch_lock.addEventListener("change",function(){
   if(this.checked)
   {
-    background_lock.style.background="#FFC745";
+    document.getElementById("iconlock").style.color="yellow";
+    document.getElementById("iconlock").style.textShadow="rgb(128 0 64) 2px 0px 12px, rgb(77 0 38 / 100%) 3px 2px 0px, rgb(255 0 43) 3px 0px 3px";
     console.log("Lock ON");
     firebase.database().ref("/Phong_Khach").update({
       "Lock": "ON"})
   }
   else {
-  background_lock.style.background="#fff  "
+    document.getElementById("iconlock").style.color="black";
+    document.getElementById("iconlock").style.textShadow="";
+
   console.log("Lock OFF");
   firebase.database().ref("/Phong_Khach").update({
     "Lock": "OFF"})
   }
 });
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCvgvxH2-_45zPOSHjJjhRVPUTBgJxB2Xg",
+  authDomain: "project1-11612.firebaseapp.com",
+  databaseURL: "https://project1-11612-default-rtdb.firebaseio.com",
+  projectId: "project1-11612",
+  storageBucket: "project1-11612.appspot.com",
+  messagingSenderId: "1024826906949",
+  appId: "1:1024826906949:web:a0e9cb94bb4a960966862c"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+
+// Auto load Temperature-------------------------
+firebase.database().ref("/Phong_Ngu/Maylanh_temp").on("value",function(snapshot){
+  var nd = snapshot.val();  
+  document.getElementById("Value-air-br").innerHTML = nd;
+  console.log(nd);
+});
+firebase.database().ref("/Phong_Khach/CO2").on("value",function(snapshot){
+  var nd = snapshot.val();  
+  document.getElementById("CO2-val").innerHTML = nd;
+  console.log(nd);
+});
+firebase.database().ref("/Phong_Khach/Do_Am").on("value",function(snapshot){
+  var nd = snapshot.val();  
+  document.getElementById("humi-val").innerHTML = nd;
+  console.log(nd);
+});
+firebase.database().ref("/Phong_Khach/nhietdo").on("value",function(snapshot){
+  var nd = snapshot.val();  
+  temp_lr= nd;
+  initial_CircleSlider_01(temp_lr);
+  console.log(nd);
+});
+firebase.database().ref("/Phong_Ngu/nhietdo").on("value",function(snapshot){
+  var nd = snapshot.val();
+  temp_br=nd;  
+  initial_CircleSlider_02(temp_br);
+  console.log(nd);
+});
+firebase.database().ref("/Phong_Khach/Maylanh_temp").on("value",function(snapshot){
+  var nd = snapshot.val();  
+  document.getElementById("Value-air-lr").innerHTML = nd;
+  console.log(nd);
+});
+// Auto load device
+
+firebase.database().ref("/Phong_Khach").on("value",function(snapshot){
+  if(snapshot.exists()){
+    console.log(snapshot.val())
+    var lock_lr_status = snapshot.val()
+    if (lock_lr_status["Lock"] == "ON")
+      {
+        document.getElementById("iconlock").style.color="yellow";
+        document.getElementById("iconlock").style.textShadow="rgb(128 0 64) 2px 0px 12px, rgb(77 0 38 / 100%) 3px 2px 0px, rgb(255 0 43) 3px 0px 3px";
+        console.log("Lock ON");
+        background_lock.checked = true;
+    }
+    else
+    {
+      document.getElementById("iconlock").style.color="black";
+      document.getElementById("iconlock").style.textShadow="";
+       console.log("Lock OFF");
+       background_lock.checked = false;
+    }
+  }
+  else
+    console.log("No data available!");
+});
+// Auto load switch
+
+// firebase.database().ref("/Phong_Khach/DoAm").on("value",function(snapshot){
+//   var nd = snapshot.val();  
+//   document.getElementById("DoAm").innerHTML = nd;
+//   console.log(nd);
+// });
+
 // Update status when reload 
 //  -----------------Bedroom-------------------
-firebase.database().ref("/Phong_Ngu").get().then((snapshot) => {
+firebase.database().ref("/Phong_Ngu").on("value",function(snapshot){
   if(snapshot.exists()){
     console.log(snapshot.val())
     var TV_br_status = snapshot.val();
@@ -346,7 +418,7 @@ firebase.database().ref("/Phong_Ngu").get().then((snapshot) => {
   else
     console.log("No data available!");
 });
-firebase.database().ref("/Phong_Ngu").get().then((snapshot) => {
+firebase.database().ref("/Phong_Ngu").on("value",function(snapshot) {
   if(snapshot.exists()){
     console.log(snapshot.val())
 
@@ -365,7 +437,7 @@ firebase.database().ref("/Phong_Ngu").get().then((snapshot) => {
   else
     console.log("No data available!");
 });
-firebase.database().ref("/Phong_Ngu").get().then((snapshot) => {
+firebase.database().ref("/Phong_Ngu").on("value",function(snapshot) {
   if(snapshot.exists()){
     console.log(snapshot.val())
 
@@ -382,7 +454,7 @@ firebase.database().ref("/Phong_Ngu").get().then((snapshot) => {
   else
     console.log("No data available!");
 });
-firebase.database().ref("/Phong_Ngu").get().then((snapshot) => {
+firebase.database().ref("/Phong_Ngu").on("value",function(snapshot){
   if(snapshot.exists()){
     console.log(snapshot.val());
     var Den2_br_status = snapshot.val()
@@ -433,7 +505,7 @@ switch1.addEventListener("change",function(){
     "Quat": "OFF"})
   }
 });
-firebase.database().ref("/Phong_Khach").get().then((snapshot) => {
+firebase.database().ref("/Phong_Khach").on("value",function(snapshot){
   if(snapshot.exists()){
     console.log(snapshot.val())
 
@@ -442,17 +514,66 @@ firebase.database().ref("/Phong_Khach").get().then((snapshot) => {
       {
       document.getElementById("statusbutton-air-lr").innerHTML="ON";
       document.getElementById("switch-air-lr").checked = true;
+      sliderngang.disabled=false;
     }
     else
     {
       document.getElementById("statusbutton-air-lr").innerHTML="OFF";
       document.getElementById("switch-air-lr").checked = false;
+      sliderngang.disabled=true;
     }
   }
   else
     console.log("No data available!");
 });
-firebase.database().ref("/Phong_Ngu").get().then((snapshot) => {
+firebase.database().ref("/Phong_Khach").on("value",function(snapshot){
+  if(snapshot.exists()){
+    console.log(snapshot.val())
+
+    var wifi_lr_status = snapshot.val()
+    if (wifi_lr_status["Wifi"] == "ON")
+      {
+        background_wifi.style.color="yellow";
+        background_wifi.style.textShadow="rgb(128 0 64) 2px 0px 12px, rgb(77 0 38 / 100%) 1px 1px 0px, rgb(255 0 43) 3px 0px 3px";
+        console.log("Wifi ON");
+      document.getElementById("wifi").checked = true;
+    }
+    else
+    {
+      background_wifi.style.color="black";
+      background_wifi.style.textShadow="";
+      console.log("Wifi OFF");
+      background_wifi.checked = false;
+    }
+  }
+  else
+    console.log("No data available!");
+});
+firebase.database().ref("/Phong_Khach").on("value",function(snapshot){
+  if(snapshot.exists()){
+    console.log(snapshot.val())
+    var lock_lr_status = snapshot.val()
+    if (lock_lr_status["Lock"] == "ON")
+      {
+        background_lock.style.color="yellow";
+        background_lock.style.textShadow="rgb(128 0 64) 2px 0px 12px, rgb(77 0 38 / 100%) 3px 2px 0px, rgb(255 0 43) 3px 0px 3px";
+        console.log("Lock ON");
+        background_lock.checked = true;
+    }
+    else
+    {
+      background_lock.style.color="black";
+      background_lock.style.textShadow="";
+       console.log("Lock OFF");
+       background_lock.checked = false;
+    }
+  }
+  else
+    console.log("No data available!");
+});
+
+
+firebase.database().ref("/Phong_Khach").on("value",function(snapshot) {
   if(snapshot.exists()){
     console.log(snapshot.val())
 
@@ -469,7 +590,7 @@ firebase.database().ref("/Phong_Ngu").get().then((snapshot) => {
   else
     console.log("No data available!");
 });
-firebase.database().ref("/Phong_Ngu").get().then((snapshot) => {
+firebase.database().ref("/Phong_Khach").on("value",function(snapshot){
   if(snapshot.exists()){
     console.log(snapshot.val())
 
@@ -486,7 +607,7 @@ firebase.database().ref("/Phong_Ngu").get().then((snapshot) => {
   else
     console.log("No data available!");
 });
-firebase.database().ref("/Phong_Khach").get().then((snapshot) => {
+firebase.database().ref("/Phong_Ngu").on("value",function(snapshot) {
   if(snapshot.exists()){
     console.log(snapshot.val())
     var Fan_lr_status = snapshot.val()
@@ -503,3 +624,106 @@ firebase.database().ref("/Phong_Khach").get().then((snapshot) => {
   else
     console.log("No data available!");
 });
+firebase.database().ref("/Phong_Khach").on("value",function(snapshot) {
+  if(snapshot.exists()){
+    console.log(snapshot.val())
+    var Fan_lr_status = snapshot.val()
+    if (Fan_lr_status["Quat"] == "OFF")
+      {
+      document.getElementsByClassName("fanrotate").className ="fanrotate-stop";
+      console.log("Fan stop");
+    }
+    else
+    { 
+      console.log("Fan on");
+    }
+  }
+  else
+    console.log("No data available!");
+});
+// --------------------CLOCK----------------
+var hoursContainer = document.querySelector('.hours')
+var minutesContainer = document.querySelector('.minutes')
+var secondsContainer = document.querySelector('.seconds')
+var tickElements = Array.from(document.querySelectorAll('.tick'))
+
+var last = new Date(0)
+last.setUTCHours(-1)
+
+var tickState = true
+
+function updateTime () {
+  var now = new Date
+  
+  var lastHours = last.getHours().toString()
+  var nowHours = now.getHours().toString()
+  if (lastHours !== nowHours) {
+    updateContainer(hoursContainer, nowHours)
+  }
+  
+  var lastMinutes = last.getMinutes().toString()
+  var nowMinutes = now.getMinutes().toString()
+  if (lastMinutes !== nowMinutes) {
+    updateContainer(minutesContainer, nowMinutes)
+  }
+  
+  var lastSeconds = last.getSeconds().toString()
+  var nowSeconds = now.getSeconds().toString()
+  if (lastSeconds !== nowSeconds) {
+    //tick()
+    updateContainer(secondsContainer, nowSeconds)
+  }
+  
+  last = now
+}
+
+function tick () {
+  tickElements.forEach(t => t.classList.toggle('tick-hidden'))
+}
+
+function updateContainer (container, newTime) {
+  var time = newTime.split('')
+  
+  if (time.length === 1) {
+    time.unshift('0')
+  }
+  
+  
+  var first = container.firstElementChild
+  if (first.lastElementChild.textContent !== time[0]) {
+    updateNumber(first, time[0])
+  }
+  
+  var last = container.lastElementChild
+  if (last.lastElementChild.textContent !== time[1]) {
+    updateNumber(last, time[1])
+  }
+}
+
+function updateNumber (element, number) {
+  //element.lastElementChild.textContent = number
+  var second = element.lastElementChild.cloneNode(true)
+  second.textContent = number
+  
+  element.appendChild(second)
+  element.classList.add('move')
+
+  setTimeout(function () {
+    element.classList.remove('move')
+  }, 990)
+  setTimeout(function () {
+    element.removeChild(element.firstElementChild)
+  }, 990)
+}
+
+setInterval(updateTime, 100);
+// get calendar
+const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const month = ["Jan","Feb","Mar","Apr","May","June","July","Aug","Sep","Oct","Nov","Dec"];
+const d = new Date();
+let day = weekday[d.getUTCDay()]; 
+document.getElementById("weekday").innerHTML = day;
+let date = d.getDate();
+document.getElementById("date").innerHTML = date;
+let name = month[d.getMonth()];
+document.getElementById("month").innerHTML = name;

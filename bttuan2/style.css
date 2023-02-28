@@ -12,23 +12,30 @@ body {
 }
 
 /* Header/logo Title */
-.header {
+#header {
+  position: relative;
   padding: 60px;
+  height: 960px;
   text-align: center;
   background: #1abc9c;
   color: white;
-  background-image: url(2174887.jpg);
+  background-image: url(./img/2174887.jpg);
+  background-size: 100% 100%;
   background-repeat: no-repeat;
+}
+#header_roll{
+  height: 60px;
+  transition: 3s;
 }
 h1{
   color: #8626ec;
-  font: weight 2  px;
+  font: weight 2px;
   
 }
 /* Style the top navigation bar */
 .navbar {
     width: 100%;
-    background-color: #6511ae;
+    background-color: black;
     overflow: auto;
   }
   /* Home contact */
@@ -45,7 +52,7 @@ h1{
   }
   
 .active {
-    background-color: #74a7c0;
+  --fa-border-color: red;
   }
   
 @media screen and (max-width: 500px) {
@@ -103,22 +110,33 @@ body {font-family: "Lato", sans-serif;}
 /* Style the tab */
 .tab {
   float: left;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;    
-  width: 10%;
-  height: 265px;
+  background-color: #7252f3c5;    
+  width: 15%;
+  height: 1000px;
   
 }
 #icon_expand{
-  margin: 100px 10px 10px 10px;
-  padding: auto;
-  border-radius: 50%;   
+  position: absolute;
+  bottom: 5px;
+  padding: 7px 12px 7px 13px;
+  border-radius: 1px; 
+  font-size: 40px;  
+  border: 1px solid #ece6e6;
+  background-color: #00FFF5;
+  color: #000000;
+}
+input:checked ~#icon_expand{
+  -webkit-transform: translateY(850px);
+  -ms-transform: translateY(850px);
+  transform: translateY(850px);
+  transition: 1s; 
+
 }
 /* Style the buttons inside the tab */
 .tab button {
   display: block;
-  background-color: inherit;
-  color: black;
+  background-color: #000000c5;
+  color: rgb(253, 253, 253);
   padding: 22px 16px;
   width: 100%;
   border: none;
@@ -130,17 +148,22 @@ body {font-family: "Lato", sans-serif;}
 }
 label {
   display: inline-block;
-  margin: 0 0 -1px;
-  font-weight: 600px;
   text-align: center;
-  color: #241d1d;
-  border: 1px solid transparent;
 }
-input:checked + label {
+#wifi:checked  ~#iconwifi {
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  transition: 0.4s;
+  --fa-primary-color: green;
+
+}
+#wifi:checked  ~#fa-wifi{
+  transition-delay: 0.2s;
+  color: #050505;
+}
+#lock:checked  ~#iconlock {
   color: #949494;
-  border: 1px solid #ddd;
-  border-top: 2px solid rgb(38 255 90);
-  border-bottom: 1px solid #fff;
+  transition: 0.4s;
+  box-shadow: rgb(187, 207, 226) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
 
 /* Change background color of buttons on hover */
@@ -174,15 +197,27 @@ input:checked + label {
   flex-direction: column;
   justify-content: flex-end;
 
+
 }
 .img-livingroom{
-  background-image: url(interior-design-with-photoframes-couch.jpg);
+  background-image: url(./img/interior-design-with-photoframes-couch.jpg);
   background-size: 100% 100%;
   border-radius: 1em;
   height: 350px;
   width: 400px;
-  margin: auto auto;
+  margin: 40px 10px 10px 60px;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 }
+.img-kitchen{
+  background-image: url(./img/kitchen.jpg);
+  background-size: 100% 100%;
+  border-radius: 1em;
+  height: 350px;
+  width: 400px;
+  margin: 40px 10px 10px 80px;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+
 
 .inside{  
   flex-direction: row;
@@ -199,6 +234,8 @@ input:checked + label {
   flex-wrap: wrap;
   border-radius: 1em;
   margin: 15px 15px 15px 15px;
+  align-items: baseline;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   
 }
 /*-------------- device bed room ----------------*/
@@ -208,7 +245,7 @@ input:checked + label {
    width: 300px;
    border-radius: 6%;
    gap: 5px;
-   box-shadow: 7px 7px #c7c5c5b8;
+   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
    text-align: center;
    margin: 15px 0px 0px 5px;
   /* flex-basis: 30%; */
@@ -221,32 +258,94 @@ input:checked + label {
   width: 300px;
   border-radius: 6%;
   gap: 5px;
-  box-shadow: 7px 7px #c7c5c5b8;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   text-align: center;
   margin: 10px auto;
  /* flex-basis: 30%; */
   
 }
+/* ------------device-kit-chen -----------*/
+/*-------------- device bed room ----------------*/
+.device-kit-chen{
+  background-color: #e3f5ee;
+   height: 220px;
+   width: 300px;
+   border-radius: 6%;
+   gap: 5px;
+   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+   text-align: center;
+   margin: 15px 0px 0px 5px;
+  /* flex-basis: 30%; */
+}
+
+.refrigerator-div{
+  width: 300px;
+  height: 540px;
+  background-color: #e3f5ee;
+  border-radius: 6%;
+  padding-top: 30px;
+  margin: -158px 0px 0px 0px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  
+}
+
 *, *:before, *:after {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 }
-
-
+.item-kit-chen{
+  display: flex;
+  /* flex-direction: column; */
+  flex-direction: column;
+  flex-basis: 60%;
+  height: 650px;
+  background-color: rgb(182, 233, 244);
+  justify-content: space-around;;
+  flex-wrap: wrap;
+  border-radius: 1em;
+  margin: 15px 15px 15px 0px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; 
+}
+.refrigerator{
+  position: relative;
+}
 .airconditioner{
-  background-image:url(airconditioner.png) ;
+  background-image:url(./img/airconditioner.png) ;
   background-size: 100% 100%;
   height: 120px;
   width: 140px;
   margin: 0 auto;
 }
+.refrigerator #status-rf{
+  position: absolute;
+  top: 35px;
+  left: 174px;
+  width: 33px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  background-color: rgb(255, 255, 255);
+  transition: 0.3s;
+}
+#status-rf-active{
+  transition: 0.3s;
+  position: absolute;
+  top: 35px;
+  left: 174px;
+  width: 33px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  box-shadow: rgb(9 252 42 / 84%) 0px 4px 12px 0px, rgb(60 64 67 / 15%) 0px 4px 15px 2px;
+  background-color: rgb(152 255 155);;
+}
+
 .fanrotate{
   display: block;
   width: 130px;
   height: 130px;
   margin: 20px auto;
-  background: url(fanrotate.gif);
+  background: url(./img/fanrotate.gif);
   background-size: 100%;
 
 }
@@ -255,7 +354,7 @@ input:checked + label {
   width: 130px;
   height: 130px;
   margin: 20px auto;
-  background: url(fanstatic.PNG);
+  background: url(./img/fanstatic.PNG);
   background-size: 100%;
 
 
@@ -265,7 +364,7 @@ input:checked + label {
   width: 130px;
   height: 130px;
   margin: 20px auto;
-  background: url(fanstatic.PNG);
+  background: url(./img/fanstatic.PNG);
   background-size: 100%;
 
 
@@ -275,7 +374,7 @@ input:checked + label {
   width: 90px;
   height: 90px;
   margin: 0 auto;
-  background: url(fanstatic.PNG);
+  background: url(./img/fanstatic.PNG);
   background-size: 100%;
 }
 input {
@@ -319,59 +418,90 @@ input {
   background-color: rgb(255, 255, 255);
   -webkit-transition: .4s;
   transition: .4s;
-}
+  /* box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;*/}
 
 input:checked + .slider {
   background-color: #2196F3;
-}
+  box-shadow: rgba(22, 6, 247, 0.514) 0px 5px 55px, rgba(59, 19, 235, 0.349) 0px -12px 30px, rgba(16, 52, 129, 0.623) 0px 4px 6px, rgba(43, 57, 241, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
+
+  
+}
 input:focus + .slider {
   box-shadow: 0 0 1px #2196F3;
+  
 }
 
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
+
 }
 .slider.round {
   border-radius: 34px;
+  
 }
 
 .slider.round:before {
   border-radius: 50%;
+  
 }
 /* --------------- Rounded sliders -------------*/ 
 
 /* ----------temperature 1 --------*/
 #CircleSliderId-01 .rs-tooltip  {
   font-size: 15px;
+  margin: 10px 10px 10px 30px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 900;
+  color: #000;
 }
 #CircleSliderId-01 .rs-tooltip div  {
   text-align: center;
   background: rgb(85, 66, 193);
   color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   border-radius: 4px;
   padding: 2px 2px 2px 2px;
-}
-#CircleSliderId-01 .rs-handle  {
-  background-color: #00FFF5;
+  margin: 0px 0px 0px 5px;
   
 }
-#CircleSliderId-01 .rs-range-color  {
-  background-color: #00FFF5;
-  stroke-width: 4px;
-
-} 
-
-#CircleSliderId-01.rs-path-color  {
-  background-color: #382d5f;
+.rs-control .rs-handle  {
+  background-color: #1417e0;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;  
+}
+#CircleSliderId-01 .rs-bg-color {
+  background-color: #000000;
+}
+ /* #CircleSliderId-01.rs-border  {
+  background-color: #050505;
   border-radius: 0;
-
+  margin: 10px auto; */
+/* #CircleSliderId-01 .rs-border.rs-inner{
+  background-color: #010808;
+} */
+#CircleSliderId-01 .rs-container{
+  box-shadow: 
+    0 -10px 5px rgb(85, 138, 236),
+    0 10px  10px  rgb(13, 16, 26);
+  border-radius: 50%;
+  margin: 10px auto;
+  border: #000;
 }
-#CircleSliderId-01{
-  margin: 5px 0 0 40px;
+#CircleSliderId-01 .rs-bg-color{
+  background: #030303;
+  box-shadow: 
+  0 -5px 5px #5a5a5a,
+  0 5px  15px  #111;
+  border-radius: 50%;
+  margin: 10px auto;
 }
+/* #CircleSliderId-01 .rs-range-color  {
+  background-color: #000000;
+  stroke-width: 4px;
+  border-radius: 0
+}  */
 
 
 /* ---------temperature 2 ----------*/
@@ -387,10 +517,6 @@ input:checked + .slider:before {
 }
 #CircleSliderId-02 .rs-handle  {
   background-color: #00FFF5;
-  
-}
-.round-slider1 .rs-border  {
-  border: 8px solid #382d5f;
   
 }
 #CircleSliderId-02 .rs-range-color  {
@@ -492,39 +618,60 @@ input:checked + .slider:before {
   border-radius: 34px;
 } 
 .hum-tem{
-  background-color: rgba(233, 233, 233, 0.94);
-  height: 190px;
-  text-align: center;
-  margin: 10px 15px;
+  display: flex;
+  flex-basis: 40%;
+  background-color: rgb(255 252 252 / 94%);
+  height: 180px;
+  margin: 50px 15px 10px 10px;
   border-radius: 2.5em;
-  box-shadow: 5px 5px rgb(215 206 206 / 94%) ;
+  box-shadow: rgba(0, 0, 0, 0.01) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   
 }
 /* -------bed room container-----*/
 .container-bedroom{
-  background-color: #ffffff;
+  background-color: #ebe4e4;
   border-radius: 1em;
   height: 650px;
-  width: 650px;
+  width: 515px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  margin: 17px 1px 0px 22px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 .img-bedroom{
-  background-image: url(bedroom.jpg);
+  background-image: url(./img/bedroom.jpg);
   background-size: 100% 100%;
   height: 350px;
   width: 400px;
   margin: 20px auto;
   border-radius: 1em;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 
 }
 /* --------------Slide display connect--------------- */
-.control-connect{
-  background-color: #fff9f99d;
+.control-connect-br{
+  background-color: #ffffff;
   margin: 5px 10px 10px 10px;
-  height: 47px;
+  height: 54px;
   border-radius: 1em;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  
+}
+.control-connect-kt{
+  background-color: #ffffff;
+  margin: 5px 10px 10px 10px;
+  height: 54px;
+  border-radius: 1em;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  
+}
+.control-connect-lr{
+  background-color: #ffffff;
+  margin: 5px 10px -29px 10px;
+  height: 54px;
+  border-radius: 1em;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   
 }
 /* ------------------- WIFI---------------- */
@@ -538,11 +685,10 @@ input:checked + .slider:before {
   border: none;
   align-items: center;
   background-color: #fff;
-  box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+  /*   */
   box-sizing: border-box;
-  color: #121212;
+  color: #000000;
   cursor: pointer;
-  font-family: Inter,sans-serif;
   line-height: 1; 
   outline: none;
   /* text-align: center; */
@@ -552,13 +698,78 @@ input:checked + .slider:before {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-}
-#iconwifi:hover {
-  background-color: #000;;
-}
-input:checked ~#iconwifi{
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; }
+/* #iconwifi:hover {
+  background-color: #000;
+  transition: 0.3s;
+} */
+/* input:checked ~#iconwifi{
+  transition: 0.4s;
   color: #000;
-  background-color: rgb(255, 199, 69);
+  background-color: rgb(227 227 227);   
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+} */
+#iconco2{
+  font-size: 15px;
+  margin: 5px 10px 10px 30px;
+  border-radius: 1px;
+  padding: 3px 12px 10px 10px;
+  border: none;
+  align-items: center;
+  background-color: #fff;
+  /*   */
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  line-height: 1; 
+  outline: none;
+  /* text-align: center; */
+  text-decoration: none;
+  transition: box-shadow .2s,-webkit-box-shadow .2s;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset; 
+}
+#iconhumi{
+  font-size: 15px;
+  margin: 5px 10px 10px 30px;
+  border-radius: 1px;
+  padding: 3px 12px 10px 10px;
+  border: none;
+  align-items: center;
+  background-color: #fff;
+  /*   */
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  line-height: 1; 
+  outline: none;
+  /* text-align: center; */
+  text-decoration: none;
+  transition: box-shadow .2s,-webkit-box-shadow .2s;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset; 
+}
+#icon_co2{
+  font-size: 30px;
+  color: #1417e0;
+}
+#icon_humi{
+  font-size: 30px;
+  color: #1417e0;
+}
+#fa-wifi{
+  font-size: 20px; 
+  color: rgb(36, 32, 32);
+}
+#fa-house-lock{
+  font-size: 20px; 
+  color: rgb(0, 0, 0);
 }
 
 /* ------------------- LOCK---------------- */
@@ -570,13 +781,12 @@ input:checked ~#iconwifi{
   border: none;
   align-items: center;
   background-color: #fff;
-  box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; 
   box-sizing: border-box;
-  color: #121212;
+  color: #000000;
   cursor: pointer;
   display: inline-flex;
   flex: 1 1 auto;
-  font-family: Inter,sans-serif;
   justify-content: center;
   line-height: 1; 
   outline: none;
@@ -588,11 +798,8 @@ input:checked ~#iconwifi{
   -webkit-user-select: none;
   touch-action: manipulation;
 }
-#iconlock:hover {
-  background-color: #000;
-}
 .TV{
-  background-image:url(television-tv-png-22246.png) ;
+  background-image:url(./img/television-tv-png-22246.png) ;
   background-size: 100% 100%;
   height: 120px;
   width: 120px;
@@ -602,4 +809,79 @@ input:checked ~#iconwifi{
   display: flex;
   justify-content: space-around;
   margin: 5px 0px 0px 0px;
+}
+#Asmosphere{
+  background-color: #00000000;
+  width: 450px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.box-weather{
+  text-align: center;
+}
+
+
+/* --------clock------------ */
+.clock {
+  height: 20px;
+  color: rgb(0, 0, 0);
+  font-size: 22px;
+  font-family: sans-serif;
+  line-height: 20.4px;
+  display: flex;
+  position: relative;
+  padding: 4px 6px 24px 9px;
+  /*background: green;*/
+  overflow: hidden;
+  font-weight: 800;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+.clock::before, .clock::after {
+  width: 7px;
+  height: 3px;
+  background: linear-gradient(to top, transparent, black);
+  position: absolute;
+  z-index: 2;
+}
+
+.clock::after {
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent, black);
+}
+
+.clock > div {
+  display: flex;
+}
+
+.tick {
+  line-height: 17px;
+}
+
+.tick-hidden {
+  opacity: 0;
+}
+
+.move {
+  animation: move linear 1s infinite;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-20px);
+  }
+}
+.weatherforecast{
+  margin: auto auto;
+  width: 90%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.calendar{
+  margin-left: 10px;
+  font-weight: 100;
+  color: #48bfba;
 }
