@@ -76,10 +76,57 @@ function initial_CircleSlider_02(temp_br){
       lineCap: "round"
   });
   };
-initial_CircleSlider_02(20);
-
+  function initial_CircleSlider_03(data){
+    $("#CircleSliderId-03").roundSlider({
+      radius: 80,
+      width: 20,
+      handleSize: "+10",
+      sliderType: "min-range",
+      value: 20,
+      readOnly:true,
+      max :60,
+      svgMode:true,
+      startAngle: 315,
+      circleShape: "half-top",
+      tooltipFormat: "checktem",
+      rangeColor: "black",
+      pathColor: "white ",
+      borderColor: "black"
+  });
+  };
+initial_CircleSlider_03(30);
 // ------------------ Check temp-------------
 function checktem(h)
+{ temp = "&#8451;";
+  tem_nomal="fa-solid fa-temperature-quarter";
+  tem_half="fa-solid fa-temperature-half";
+  tem_threequarters="fa-solid fa-temperature-three-quarters";
+  tem_high="fa-solid fa-temperature-high";
+  
+  var  val =h.value,speed,tem_st;
+  if (val < 20) 
+  {
+    tem_st=tem_nomal;
+    speed = "Too Cold";
+  }
+  else if (val < 34) 
+  {
+    tem_st=tem_half;
+    speed = "Normal";
+  }
+  else if (val <40 ) 
+  {
+    tem_st=tem_threequarters;
+    speed = "Hot";
+  }
+  else 
+  {
+    tem_st=tem_high;
+    speed = "Dangerous";
+  }
+  return "<h2>"+val+ "<span>" + temp +"</span>"+ "</h2>" + "<div>"+"<i class="+tem_st+">"+"<i>" + speed + "<div>";
+}
+function checkgas(h)
 { temp = "&#8451;";
   var  val =h.value,speed;
   if (val < 20) speed ="Too Cold";
@@ -104,217 +151,43 @@ function checktem(h)
 //  };
 // // add active 
 
-// ---------- Slider Ngang -----------
-var val_air_br=document.getElementById("Value-air-br")
-var SliderNgang_br = document.getElementById("slider2-br");
-SliderNgang_br.oninput = function(){
-  document.getElementById("Value-air-br").innerHTML = SliderNgang_br.value;
-  firebase.database().ref("/Phong_Ngu").update({
-    "Maylanh_temp": SliderNgang_br.value})
-} ;
-var val_air_lr=document.getElementById("Value-air-lr")
-var SliderNgang_lr = document.getElementById("slider2-lr");
-SliderNgang_lr.oninput = function(){
-  document.getElementById("Value-air-lr").innerHTML = SliderNgang_lr.value;
-  firebase.database().ref("/Phong_Khach").update({
-    "Maylanh_temp":SliderNgang_lr.value})
-} ;
-//  ------ active toggle-------
-function myfunc(div) {
-  var className = div.getAttribute("class");
-  if(className=="fanrotate") {
-    div.className = "fanrotate-stop";
-    firebase.database().ref("/Phong_Ngu").update({
-      "Quat": "OFF"})
-  }
-  else{
-    div.className = "fanrotate";
-    firebase.database().ref("/Phong_Ngu").update({
-      "Quat": "ON"})
-  }
-};
-function offFan_lr(div) {
-  var className = div.getAttribute("class");
-  if(className=="fanrotate") {
-    div.className = "fanrotate-stop";
-    firebase.database().ref("/Phong_Khach").update({
-      "Quat": "OFF"})
-  }
-  else{
-    div.className = "fanrotate";
-    firebase.database().ref("/Phong_Khach").update({
-      "Quat": "ON"})
-  }
-};
 
-// ------------button connect-----------
+$(document).ready(function() {
+  $('#iconbell').click(function() {
+    $(this).find('.fa-bell,.fa-bell-slash').toggleClass('fa-bell').toggleClass('fa-bell-slash');
+  });
+});
+$(document).ready(function() {
+  $('#iconlock').click(function() {
+    $(this).find('.fa-unlock,.fa-house-lock').toggleClass('fa-unlock').toggleClass('fa-house-lock');
+  });
+});
+// var background_volume=document.getElementsByClassName("fa-volume-high");
+// var switch_volume=document.getElementById("volume");
+// switch_volume.addEventListener("change",function(){
+//   if(this.checked)
+//   {
+//     document.getElementById("iconvolume").style.color="yellow";
+//     document.getElementById("iconvolume").style.textShadow="rgb(128 0 64) 2px 0px 12px, rgb(77 0 38 / 100%) 3px 2px 0px, rgb(255 0 43) 3px 0px 3px";
+//     console.log("Volume ON");
+//     firebase.database().ref("/Phong_Khach").update({
+//       "Lock": "ON"})
+//   }
+//   else {
 
-var sliderngang=document.getElementById("slider2-lr");
-var switch1=document.getElementById("switch-air-lr");
-switch1.addEventListener("change",function(){
-  if(this.checked)
-  {
-    document.getElementById("statusbutton-air-lr").innerHTML="ON";
-    sliderngang.disabled=false;
-    firebase.database().ref("/Phong_Khach").update({
-      "Maylanh": "ON"})
-  }
-  else {
-  document.getElementById("statusbutton-air-lr").innerHTML="OFF";
-  sliderngang.disabled=true;
-  firebase.database().ref("/Phong_Khach").update({
-    "Maylanh": "OFF"})
-  }
-});
-// Conditioner bedroom
-var sliderngang=document.getElementById("slider2-lr");
-var switch1=document.getElementById("switch-air-br");
-switch1.addEventListener("change",function(){
-  if(this.checked)
-  {
-    document.getElementById("statusbutton-air-br").innerHTML="ON";
-    sliderngang.disabled=false;
-    firebase.database().ref("/Phong_Ngu").update({
-      "Maylanh": "ON"})
+//     document.getElementById("iconvolume").style.color="black";
+//     document.getElementById("iconvolume").style.textShadow="";
 
-  }
-  else {
-  document.getElementById("statusbutton-air-br").innerHTML="OFF";
-  sliderngang.disabled=true;
-  firebase.database().ref("/Phong_Ngu").update({
-    "Maylanh": "OFF"})
-  }
-});
 
-// TV bedroom
-var sliderngang=document.getElementById("slider2-lr");
-var switch1=document.getElementById("switch-tv-br");
-switch1.addEventListener("change",function(){
-  if(this.checked)
-  {
-    document.getElementById("statusbutton-tv-br").innerHTML="ON";
-    sliderngang.disabled=false;
-    console.log("On");
-    firebase.database().ref("/Phong_Ngu").update({
-      "TV": "ON"})
-  }
-  else {
-  document.getElementById("statusbutton-tv-br").innerHTML="OFF";
-  sliderngang.disabled=true;
-  firebase.database().ref("/Phong_Ngu").update({
-    "TV": "OFF"})
-  }
-});
-var status_fr=document.getElementById("status-rf");
-var switch_fr=document.getElementById("switch-fr-kc");
-switch_fr.addEventListener("change",function(){
-  if(this.checked)
-  {  status_fr.id = status_fr.id.replace("status-rf","status-rf-active");
-    status_fr.innerHTML="ON";
-    sliderngang.disabled=false; 
-    firebase.database().ref("/Phong_Bep").update({
-      "Tu_lanh": "ON"})
-  }
-  else {
-    status_fr.id = status_fr.id.replace("status-rf-active","status-rf");
-    status_fr.innerHTML="OFF";
-  sliderngang.disabled=true;
-  firebase.database().ref("/Phong_Bep").update({
-    "Tu_lanh": "OFF"})
-  }
-});
-// Connect status
-// ---------------Wifi---------------
-var background_wifi=document.getElementById("iconwifi");
-var switch_wifi=document.getElementById("wifi");
-switch_wifi.addEventListener("change",function(){
-  if(this.checked)
-  { 
-    background_wifi.style.color="yellow";
-    background_wifi.style.textShadow="rgb(128 0 64) 2px 0px 12px, rgb(77 0 38 / 100%) 1px 1px 0px, rgb(255 0 43) 3px 0px 3px";
-    console.log("Wifi ON");
-    firebase.database().ref("/Phong_Khach").update({
-      "Wifi": "ON"})
-  }
-  else {
-    background_wifi.style.color="black";
-    background_wifi.style.textShadow="";
-  console.log("Wifi OFF");
-  firebase.database().ref("/Phong_Khach").update({
-    "Wifi": "OFF"})
-  }
-});
-//----- Light Living Room ----
-var switch1=document.getElementById("switch-dlight-lr");
-switch1.addEventListener("change",function(){
-  if(this.checked)
-  {
-    firebase.database().ref("/Phong_Khach").update({
-      "Den_Khach": "ON"})
-  }
-  else {
-  firebase.database().ref("/Phong_Khach").update({
-    "Den_Khach": "OFF"}) 
-  }
-});
-var switch1=document.getElementById("switch-hlight-lr");
-switch1.addEventListener("change",function(){
-  if(this.checked)
-  {
-    firebase.database().ref("/Phong_Khach").update({
-      "Den_Hien": "ON"})
-  }
-  else {
-  firebase.database().ref("/Phong_Khach").update({
-    "Den_Hien": "OFF"})
-  }
-});
-
-//----- Lights Bed Room ----
-var switch1=document.getElementById("switch-den1-br");
-switch1.addEventListener("change",function(){
-  if(this.checked)
-  {
-    firebase.database().ref("/Phong_Ngu").update({
-      "Den1": "ON"})
-  }
-  else {
-  firebase.database().ref("/Phong_Ngu").update({
-    "Den1": "OFF"})
-  }
-});
-var switch1=document.getElementById("switch-den2-br");
-switch1.addEventListener("change",function(){
-  if(this.checked)
-  {
-    firebase.database().ref("/Phong_Ngu").update({
-      "Den2": "ON"})
-  }
-  else {
-  firebase.database().ref("/Phong_Ngu").update({
-    "Den2": "OFF"})
-  }
-});
-
-var background_lock=document.getElementById("lock");
-var switch_lock=document.getElementById("lock");
-switch_lock.addEventListener("change",function(){
-  if(this.checked)
-  {
-    document.getElementById("iconlock").style.color="yellow";
-    document.getElementById("iconlock").style.textShadow="rgb(128 0 64) 2px 0px 12px, rgb(77 0 38 / 100%) 3px 2px 0px, rgb(255 0 43) 3px 0px 3px";
-    console.log("Lock ON");
-    firebase.database().ref("/Phong_Khach").update({
-      "Lock": "ON"})
-  }
-  else {
-    document.getElementById("iconlock").style.color="black";
-    document.getElementById("iconlock").style.textShadow="";
-
-  console.log("Lock OFF");
-  firebase.database().ref("/Phong_Khach").update({
-    "Lock": "OFF"})
-  }
+//   console.log("Lock OFF");
+//   firebase.database().ref("/Phong_Khach").update({
+//     "Lock": "OFF"})
+//   }
+// });
+$(document).ready(function() {
+  $('#iconvolume').click(function() {
+    $(this).find('.fa-volume-high,.fa-volume-low').toggleClass('fa-volume-high').toggleClass('fa-volume-low');
+  });
 });
 
 // Your web app's Firebase configuration
@@ -335,6 +208,7 @@ firebase.initializeApp(firebaseConfig);
 firebase.database().ref("/Phong_Ngu/Maylanh_temp").on("value",function(snapshot){
   var nd = snapshot.val();  
   document.getElementById("Value-air-br").innerHTML = nd;
+ 
   console.log(nd);
 });
 firebase.database().ref("/Phong_Khach/CO2").on("value",function(snapshot){
@@ -362,6 +236,7 @@ firebase.database().ref("/Phong_Ngu/nhietdo").on("value",function(snapshot){
 firebase.database().ref("/Phong_Khach/Maylanh_temp").on("value",function(snapshot){
   var nd = snapshot.val();  
   document.getElementById("Value-air-lr").innerHTML = nd;
+  SliderNgang_lr.value=nd;
   console.log(nd);
 });
 // Auto load device
@@ -490,6 +365,214 @@ firebase.database().ref("/Phong_Ngu").on("value",function(snapshot){
 //   else
 //     console.log("No data available!");
 // });
+// ---------- Slider Ngang -----------
+var val_air_br=document.getElementById("Value-air-br")
+var SliderNgang_br = document.getElementById("slider2-br");
+SliderNgang_br.oninput = function(){
+  document.getElementById("Value-air-br").innerHTML = SliderNgang_br.value;
+  firebase.database().ref("/Phong_Ngu").update({
+    "Maylanh_temp": SliderNgang_br.value})
+} ;
+var SliderNgang_lr = document.getElementById("sliderair-lr");
+var val_air_lr=document.getElementById("Value-air-lr");
+SliderNgang_lr.oninput = function(){
+  document.getElementById("Value-air-lr").innerHTML = SliderNgang_lr.value;
+  firebase.database().ref("/Phong_Khach").update({
+    "Maylanh_temp":SliderNgang_lr.value})
+}; 
+//  ------ active toggle-------
+function myfunc(div) {
+  var className = div.getAttribute("class");
+  if(className=="fanrotate") {
+    div.className = "fanrotate-stop";
+    firebase.database().ref("/Phong_Ngu").update({
+      "Quat": "OFF"})
+  }
+  else{
+    div.className = "fanrotate";
+    firebase.database().ref("/Phong_Ngu").update({
+      "Quat": "ON"})
+  }
+};
+function offFan_lr(div) {
+  var className = div.getAttribute("class");
+  if(className=="fanrotate") {
+    div.className = "fanrotate-stop";
+    firebase.database().ref("/Phong_Khach").update({
+      "Quat": "OFF"})
+  }
+  else{
+    div.className = "fanrotate";
+    firebase.database().ref("/Phong_Khach").update({
+      "Quat": "ON"})
+  }
+};
+
+// ------------button connect-----------
+
+var switch1=document.getElementById("switch-air-lr");
+switch1.addEventListener("change",function(){
+  if(this.checked)
+  {
+    document.getElementById("statusbutton-air-lr").innerHTML="ON";
+    SliderNgang_lr.disabled=false;
+    firebase.database().ref("/Phong_Khach").update({
+      "Maylanh": "ON"})
+  }
+  else {
+  document.getElementById("statusbutton-air-lr").innerHTML="OFF";
+  SliderNgang_lr.disabled=true;
+  firebase.database().ref("/Phong_Khach").update({
+    "Maylanh": "OFF"})
+  }
+});
+// Conditioner bedroom
+var sliderngang_br=document.getElementById("slider2-br");
+var switch1=document.getElementById("switch-air-br");
+switch1.addEventListener("change",function(){
+  if(this.checked)
+  {
+    document.getElementById("statusbutton-air-br").innerHTML="ON";
+    sliderngang_br.disabled=false;
+    firebase.database().ref("/Phong_Ngu").update({
+      "Maylanh": "ON"})
+
+  }
+  else {
+  document.getElementById("statusbutton-air-br").innerHTML="OFF";
+  sliderngang_br.disabled=true;
+  firebase.database().ref("/Phong_Ngu").update({
+    "Maylanh": "OFF"})
+  }
+});
+
+// TV bedroom
+var switch1=document.getElementById("switch-tv-br");
+switch1.addEventListener("change",function(){
+  if(this.checked)
+  {
+    document.getElementById("statusbutton-tv-br").innerHTML="ON";
+    console.log("On");
+    firebase.database().ref("/Phong_Ngu").update({
+      "TV": "ON"})
+  }
+  else {
+  document.getElementById("statusbutton-tv-br").innerHTML="OFF";
+  firebase.database().ref("/Phong_Ngu").update({
+    "TV": "OFF"})
+  }
+});
+var status_fr=document.getElementById("status-rf");
+var switch_fr=document.getElementById("switch-fr-kc");
+switch_fr.addEventListener("change",function(){
+  if(this.checked)
+  {  status_fr.id = status_fr.id.replace("status-rf","status-rf-active");
+    status_fr.innerHTML="ON";
+    sliderngang_br.disabled=false; 
+    firebase.database().ref("/Phong_Bep").update({
+      "Tu_lanh": "ON"})
+  }
+  else {
+    status_fr.id = status_fr.id.replace("status-rf-active","status-rf");
+    status_fr.innerHTML="OFF";
+  sliderngang_br.disabled=true;
+  firebase.database().ref("/Phong_Bep").update({
+    "Tu_lanh": "OFF"})
+  }
+});
+// Connect status
+// ---------------Wifi---------------
+var background_wifi=document.getElementById("iconwifi");
+var switch_wifi=document.getElementById("wifi");
+switch_wifi.addEventListener("change",function(){
+  if(this.checked)
+  { 
+    background_wifi.style.color="yellow";
+    background_wifi.style.textShadow="rgb(128 0 64) 2px 0px 12px, rgb(77 0 38 / 100%) 1px 1px 0px, rgb(255 0 43) 3px 0px 3px";
+    console.log("Wifi ON");
+    firebase.database().ref("/Phong_Khach").update({
+      "Wifi": "ON"})
+  }
+  else {
+    background_wifi.style.color="black";
+    background_wifi.style.textShadow="";
+  console.log("Wifi OFF");
+  firebase.database().ref("/Phong_Khach").update({
+    "Wifi": "OFF"})
+  }
+});
+//----- Light Living Room ----
+var switch1=document.getElementById("switch-dlight-lr");
+switch1.addEventListener("change",function(){
+  if(this.checked)
+  {
+    firebase.database().ref("/Phong_Khach").update({
+      "Den_Khach": "ON"})
+  }
+  else {
+  firebase.database().ref("/Phong_Khach").update({
+    "Den_Khach": "OFF"}) 
+  }
+});
+var switch1=document.getElementById("switch-hlight-lr");
+switch1.addEventListener("change",function(){
+  if(this.checked)
+  {
+    firebase.database().ref("/Phong_Khach").update({
+      "Den_Hien": "ON"})
+  }
+  else {
+  firebase.database().ref("/Phong_Khach").update({
+    "Den_Hien": "OFF"})
+  }
+});
+
+//----- Lights Bed Room ----
+var switch1=document.getElementById("switch-den1-br");
+switch1.addEventListener("change",function(){
+  if(this.checked)
+  {
+    firebase.database().ref("/Phong_Ngu").update({
+      "Den1": "ON"})
+  }
+  else {
+  firebase.database().ref("/Phong_Ngu").update({
+    "Den1": "OFF"})
+  }
+});
+var switch1=document.getElementById("switch-den2-br");
+switch1.addEventListener("change",function(){
+  if(this.checked)
+  {
+    firebase.database().ref("/Phong_Ngu").update({
+      "Den2": "ON"})
+  }
+  else {
+  firebase.database().ref("/Phong_Ngu").update({
+    "Den2": "OFF"})
+  }
+});
+
+var background_lock=document.getElementById("lock");
+var switch_lock=document.getElementById("lock");
+switch_lock.addEventListener("change",function(){
+  if(this.checked)
+  {
+    document.getElementById("iconlock").style.color="yellow";
+    document.getElementById("iconlock").style.textShadow="rgb(128 0 64) 2px 0px 12px, rgb(77 0 38 / 100%) 3px 2px 0px, rgb(255 0 43) 3px 0px 3px";
+    console.log("Lock ON");
+    firebase.database().ref("/Phong_Khach").update({
+      "Lock": "ON"})
+  }
+  else {
+    document.getElementById("iconlock").style.color="black";
+    document.getElementById("iconlock").style.textShadow="";
+
+  console.log("Lock OFF");
+  firebase.database().ref("/Phong_Khach").update({
+    "Lock": "OFF"})
+  }
+});
 var status_fan=document.getElementById("fanrotate");
 var switch_fan=document.getElementById("switch-fan");
 switch1.addEventListener("change",function(){
@@ -514,13 +597,13 @@ firebase.database().ref("/Phong_Khach").on("value",function(snapshot){
       {
       document.getElementById("statusbutton-air-lr").innerHTML="ON";
       document.getElementById("switch-air-lr").checked = true;
-      sliderngang.disabled=false;
+      SliderNgang_lr.disabled=false;
     }
     else
     {
       document.getElementById("statusbutton-air-lr").innerHTML="OFF";
       document.getElementById("switch-air-lr").checked = false;
-      sliderngang.disabled=true;
+      SliderNgang_lr.disabled=true;
     }
   }
   else

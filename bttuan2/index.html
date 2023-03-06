@@ -5,11 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="style.css" />
-    <!-- <link
-      rel="stylesheet"
-      href="https://kit.fontawesome.com/2d2edda896.css"
-      crossorigin="anonymous"
-    /> -->
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -34,26 +30,49 @@
       <p class="animate__animated animate__heartBeat">
         Providing <b>Super and Flexible </b>Control.
       </p>
-            <div>
+      <div>
         <input id="expand" type="checkbox" hidden />
         <label for="expand" id="icon_expand">
-          <i
-            class="fa-solid fa-arrow-up"
-          
-          ></i>
+          <i class="fa-solid fa-arrow-up"></i>
         </label>
       </div>
-    </div>  
+    </div>
 
     <!-- Navigation Bar -->
     <div class="navbar">
       <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
-      <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+      <a href="https://www.facebook.com/sprchuoi/"
+        ><i class="fa fa-fw fa-envelope"></i> Contact</a
+      >
     </div>
 
     <!-- The flexible grid (content) -->
     <div class="row">
       <div class="tab" id="tabcontrol">
+        <div class="User">
+          <img
+            src="./img/cat-glasses-animals-selective-coloring-wallpaper-preview.jpg"
+            alt="img user"
+            height="150px"
+            width="200px"
+            style="
+              border-radius: 1em;
+              box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
+                rgba(17, 17, 26, 0.1) 0px 8px 24px,
+                rgba(17, 17, 26, 0.1) 0px 16px 48px;
+            "
+          />
+          <p
+            style="
+              font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+                sans-serif;
+              font-weight: 500;
+              font-size: 20px;
+            "
+          >
+            Wellcome , Bình
+          </p>
+        </div>
         <button
           class="tablinks active"
           onclick="openroom(event, 'Living-room')"
@@ -65,7 +84,7 @@
         <button class="tablinks" onclick="openroom(event, 'Bed-room')">
           <i class="fa-solid fa-bed"></i>
           <h3>Bed room</h3>
-        </button> 
+        </button>
         <button class="tablinks" onclick="openroom(event, 'Kit-chen')">
           <i class="fa-solid fa-bowl-food"></i>
           <h3>Kit chen</h3>
@@ -84,32 +103,64 @@
       <!-- Living room  (content) -->
       <div class="main" onload="document.getElementById('switch-lr').click();">
         <div id="Living-room" class="tabcontent">
+          <div
+            class="Room"
+            style="
+              font-family: 'Courier New', Courier, monospace;
+              display: flex;
+              gap: 30px;
+              box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+                rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+                rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+              margin: 10px 10px 10px 10px;
+              width: 30%;
+            "
+          >
+            <h1 class="Room-name">Dashboard:</h1>
+            <h1 class="Room-name">Living room</h1>
+          </div>
           <div class="weatherforecast">
-            <a class="weatherwidget-io" href="https://forecast7.com/en/10d82106d63/ho-chi-minh-city/" data-label_1="Ho Chi Minh" data-label_2="CITY" data-icons="Climacons Animated" data-mode="Forecast" data-theme="weather_one" >Ho Chi Minh CITY</a>
-              <script>
-              !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-              </script>
+            <a
+              class="weatherwidget-io"
+              href="https://forecast7.com/en/10d75106d68/ho-chi-minh/"
+              data-label_1="HO CHI MINH"
+              data-label_2="WEATHER"
+              data-theme="weather_one"
+              >HO CHI MINH WEATHER</a
+            >
+            <script>
+              !(function (d, s, id) {
+                var js,
+                  fjs = d.getElementsByTagName(s)[0];
+                if (!d.getElementById(id)) {
+                  js = d.createElement(s);
+                  js.id = id;
+                  js.src = "https://weatherwidget.io/js/widget.min.js";
+                  fjs.parentNode.insertBefore(js, fjs);
+                }
+              })(document, "script", "weatherwidget-io-js");
+            </script>
           </div>
           <div class="container-item">
-           
             <div class="container-bedroom">
               <div class="img-livingroom"></div>
               <div class="device-bed">
                 <div class="control-connect-lr">
-                  <input type="checkbox" id="wifi" hidden>
+                  <input type="checkbox" id="wifi" hidden />
                   <label for="wifi" id="iconwifi">
                     <div id="icon_wifi">
-                      <i 
-                        class="fa-solid fa-wifi"
-                      ></i>
+                      <i class="fa-solid fa-wifi"></i>
                     </div>
                   </label>
-                  
-                  <input id="lock" type="checkbox" hidden>
+
+                  <input id="lock" type="checkbox" hidden />
                   <label for="lock" id="iconlock">
-                    <i
-                      class="fa-solid fa-house-lock"
-                    ></i>
+                    <i class="fa-solid fa-unlock"></i>
+                  </label>
+
+                  <input id="bell" type="checkbox" hidden />
+                  <label for="bell" id="iconbell">
+                    <i class="fa-solid fa-bell"></i>
                   </label>
                 </div>
               </div>
@@ -119,36 +170,39 @@
                   <div id="CircleSliderId-01" class="round-slider1"></div>
                   <div id="Asmosphere">
                     <div class="Asmosphere co2">
-                    <label id="iconco2">
-                      <div id="icon_co2">
-                        <i class="fa-solid fa-cloud"></i>
-                      </div>
-                      <h2>CO2</h2>
-                      <span id="CO2-val" style="color: rgb(177 161 161);">None</span><span style="color: rgb(177 161 161);"> PPM </span>
-                    </label> 
-                  </div>
-                  <div class="Asmosphere humi">
-                    <label id="iconhumi">
-                      <div id="icon_humi">
-                        <i class="fa-solid fa-droplet"></i>
-                      </div>
-                      <h2>Humadity</h2>
-                      <span id="humi-val" style="color: rgb(177 161 161);">None</span><span style="color: rgb(177 161 161);"> % </span >
-                    </label> 
-                    
-                  </div>    
-                              
+                      <label id="iconco2">
+                        <div id="icon_co2">
+                          <i class="fa-solid fa-cloud"></i>
+                        </div>
+                        <h2>CO2</h2>
+                        <span id="CO2-val" style="color: rgb(177 161 161)"
+                          >None</span
+                        ><span style="color: rgb(177 161 161)"> PPM </span>
+                      </label>
+                    </div>
+                    <div class="Asmosphere humi">
+                      <label id="iconhumi">
+                        <div id="icon_humi">
+                          <i class="fa-solid fa-droplet"></i>
+                        </div>
+                        <h2>Humadity</h2>
+                        <span id="humi-val" style="color: rgb(177 161 161)"
+                          >None</span
+                        ><span style="color: rgb(177 161 161)"> % </span>
+                      </label>
+                    </div>
+
                     <!-- <div class="Asmosphere clock" >
                      
                     </div> -->
-                    
-                    <div class="Asmosphere forecast"> 
+
+                    <div class="Asmosphere forecast">
                       <div class="clock">
                         <div class="hours">
                           <div class="first">
                             <div class="number">0</div>
                           </div>
-                          <div class="second">  
+                          <div class="second">
                             <div class="number">0</div>
                           </div>
                         </div>
@@ -176,14 +230,11 @@
                             <span id="date">None</span><span> </span>
                             <span id="month">None</span>
                           </span>
-                            
                         </div>
                       </div>
                     </div>
-                   
                   </div>
                 </div>
-                
               </div>
             </div>
 
@@ -210,7 +261,7 @@
                   min="15"
                   max="32"
                   value="20"
-                  id="slider2-lr"
+                  id="sliderair-lr"
                 />
               </div>
               <div class="device-living-room">
@@ -226,23 +277,39 @@
         </div>
         <!-- Bed room  (content) -->
         <div id="Bed-room" class="tabcontent">
+          <div
+            class="Room"
+            style="
+              font-family: 'Courier New', Courier, monospace;
+              display: flex;
+              gap: 30px;
+              box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+                rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+                rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+              margin: 10px 10px 10px 10px;
+              width: 30%;
+            "
+          >
+            <h1 class="Room-name">Dashboard:</h1>
+            <h1 class="Room-name">Bed room</h1>
+          </div>
           <div class="container-item">
             <div class="container-bedroom">
               <div class="img-bedroom"></div>
               <div class="device-bed">
                 <div class="control-connect-br">
-                  <input type="checkbox" id="wifi" hidden>
+                  <input type="checkbox" id="wifi" hidden />
                   <label for="wifi" id="iconwifi">
-                      <i 
-                        class="fa-solid fa-wifi"
-                      ></i>
+                    <i class="fa-solid fa-wifi"></i>
                   </label>
 
-                  <input id="lock" type="checkbox" hidden>
+                  <input id="lock" type="checkbox" hidden />
                   <label for="lock" id="iconlock">
-                    <i
-                      class="fa-solid fa-house-lock"
-                    ></i>
+                    <i class="fa-solid fa-house-lock"></i>
+                  </label>
+                  <input id="volume" type="checkbox" hidden />
+                  <label for="volume" id="iconvolume">
+                    <i class="fa-solid fa-volume-high"></i>
                   </label>
                 </div>
               </div>
@@ -309,100 +376,133 @@
               </div>
             </div>
           </div>
-        </div> 
-          
+        </div>
 
-            <!-- Kit chen -->
-            <div id="Kit-chen" class="tabcontent">
-              <div class="container-item">
-                <div class="container-bedroom">
-                  <div class="img-kitchen"></div>
-                  <div class="device-bed">
-                    <div class="control-connect-kt">
-                      <input type="checkbox" id="wifi" hidden>
-                      <label for="wifi" id="iconwifi">
-                        <div id="icon_wifi">
-                          <i 
-                            class="fa-solid fa-wifi active"
-                          ></i>
-                        </div>
-                      </label>
-    
-                      <input id="lock" type="checkbox" hidden>
-                      <label for="lock" id="iconlock">
-                        <i
-                          class="fa-solid fa-house-lock" 
-                        
-                        ></i>
-                      </label>
+        <!-- Kit chen -->
+        <div id="Kit-chen" class="tabcontent">
+          <div
+            class="Room"
+            style="
+              font-family: 'Courier New', Courier, monospace;
+              display: flex;
+              gap: 30px;
+              box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+                rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+                rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+              margin: 10px 10px 10px 10px;
+              width: 30%;
+            "
+          > 
+            <h1 class="Room-name">Dashboard:</h1>
+            <h1 class="Room-name">Kit chen</h1>
+          </div>
+          <div class="container-item">
+            <div class="container-bedroom">
+              <div class="img-kitchen"></div>
+              <div class="device-bed">
+                <div class="control-connect-kt">
+                  <input type="checkbox" id="wifi" hidden />
+                  <label for="wifi" id="iconwifi">
+                    <div id="icon_wifi">
+                      <i class="fa-solid fa-wifi active"></i>
                     </div>
-                  </div>
-                  <div class="device-bed"></div>
-                  <div class="device-bed">
-                    <div class="hum-tem">
-                      <div id="CircleSliderId-02" class="round-slider1"></div>
-                    </div>
-                  </div>
+                  </label>
+
+                  <input id="lock" type="checkbox" hidden />
+                  <label for="lock" id="iconlock">
+                    <i class="fa-solid fa-house-lock"></i>
+                  </label>
                 </div>
-
-                <div class="item-kit-chen">
-                  <div class="device-kit-chen">
-                    <h2>Desk Lamp</h2>
-                    <input class="l" type="checkbox" />
-                  </div>
-                  <div class="device-kit-chen">
-                    <h2>Hall Lamp</h2>
-                    <input class="l" type="checkbox" />
-                  </div>
-                   
-    
-                  <div class="device-kit-chen">
-                    <h2>Fan</h2>
-                    <div
-                      id="div"
-                      onclick="myfunc(this)"
-                      class="fanrotate"
-                    ></div>
-                  </div>
-                  <div class="device-kit-chen">
-                    <div class="status-button">
-                      <h3>ON</h3>
-                      <label class="switch">
-                        <input type="checkbox" />
-                        <span class="slider round"></span>
+              </div>
+              <div class="device-bed"></div>
+              <div class="device-bed">
+                <div class="hum-tem">
+                  <div id="CircleSliderId-03" class="round-slider1"></div>
+                  <div id="Asmosphere-kt">
+                    <div class="co2-kt">
+                      <label id="iconco2">
+                        <div id="icon_co2">
+                          <i class="fa-solid fa-cloud"></i>
+                        </div>
+                        <h2>CO2</h2>
+                        <span id="CO2-val" style="color: rgb(177 161 161)"
+                          >None</span
+                        ><span style="color: rgb(177 161 161)"> PPM </span>
+                      </div>
                       </label>
-                    </div>
-                    <div class="TV"></div>
-                    <div>
-                      <h2>Television</h2>
-                    </div>
-                  </div>
-                  <div class="device-kit-chen">
-                    <div class="refrigerator-div">
-                      <div class="status-button">
-
-                        <label class="switch">
-                          <input type="checkbox" id="switch-fr-kc"/>
-                          <span class="slider round"></span>
+                      <div class="gas-kt">
+                        <label id="iconhumi">
+                          <div id="icon_humi">
+                            <i class="fa-solid fa-smog"></i>
+                          </div>
+                          <h2>Smoke</h2>
+                          <span id="humi-val" style="color: rgb(177 161 161)"
+                            >None</span
+                          ><span style="color: rgb(177 161 161)"> % </span>
                         </label>
                       </div>
-                      <div class="refrigerator">
-                        <img alt="" src="./img/refrigerator.png" width="300px" height="300px"/>
-                        <p id="status-rf">ON</p>
-                      </div>
-                    </div>
+                    
                   </div>
                 </div>
               </div>
             </div>
-        
-        
+
+            <div class="item-kit-chen">
+              <div class="device-kit-chen">
+                <h2>Desk Lamp</h2>
+                <input class="l" type="checkbox" />
+              </div>
+              <div class="device-kit-chen">
+                <h2>Hall Lamp</h2>
+                <input class="l" type="checkbox" />
+              </div>
+
+              <div class="device-kit-chen">
+                <h2>Fan</h2>
+                <div id="div" onclick="myfunc(this)" class="fanrotate"></div>
+              </div>
+              <div class="device-kit-chen">
+                <div class="status-button">
+                  <h3>ON</h3>
+                  <label class="switch">
+                    <input type="checkbox" />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+                <div class="TV"></div>
+                <div>
+                  <h2>Television</h2>
+                </div>
+              </div>
+              <div class="device-kit-chen">
+                <div class="refrigerator-div">
+                  <div class="status-button">
+                    <label class="switch">
+                      <input type="checkbox" id="switch-fr-kc" />
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                  <div class="refrigerator">
+                    <img
+                      alt=""
+                      src="./img/refrigerator.png"
+                      width="300px"
+                      height="300px"
+                    />
+                    <p id="status-rf">ON</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- Footer -->
-    <!-- <div class="footer">
+    <div class="footer">
       <h2>Footer</h2>
-    </div> -->
+      <div><h1>Designed by Nguyễn Quang Bình</h1></div>
+    </div>
     <script
       src="https://kit.fontawesome.com/2d2edda896.js"
       crossorigin="anonymous"

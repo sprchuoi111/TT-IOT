@@ -112,7 +112,9 @@ body {font-family: "Lato", sans-serif;}
   float: left;
   background-color: #7252f3c5;    
   width: 15%;
-  height: 1000px;
+  height: 100%;
+  box-shadow: rgba(0, 0, 0, 0.25) 2.4px 2.4px 3.2px;
+  /* position: fixed; */
   
 }
 #icon_expand{
@@ -135,16 +137,17 @@ input:checked ~#icon_expand{
 /* Style the buttons inside the tab */
 .tab button {
   display: block;
-  background-color: #000000c5;
-  color: rgb(253, 253, 253);
+  background-color: #00000000;
+  color: rgb(0, 0, 0);
   padding: 22px 16px;
   width: 100%;
   border: none;
   outline: none;
   text-align: left;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.8s;
   font-size: 17px;
+  
 }
 label {
   display: inline-block;
@@ -173,7 +176,12 @@ label {
 
 /* Create an active/current "tab button" class */
 .tab button.active {
-  background-color: #ba94e2;
+  background-color: #020116;
+  width: 300px;
+  height: 90px;
+  transition: 0,4s;
+  color: #1cece5;
+  box-shadow: rgba(7, 7, 7, 0.623) -5px 5px, rgba(53, 48, 51, 0.411) -10px 10px, rgba(7, 6, 7, 0.384) -15px 15px, rgba(5, 5, 5, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
 }
 
 /* Style the tab content */
@@ -183,7 +191,6 @@ label {
   border: 1px solid #ccc;
   width: 100%;
   border-left: none;
-  height: 500px;
 }
 .container-item{
   background-color: rgb(255 255 255 / 0%);
@@ -252,6 +259,13 @@ label {
 }
 
 /*-------------- device living room ----------------*/
+.User{
+  margin-left: 35px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  
+  
+}
 .device-living-room{
  background-color: #ebf3f0cc;
   height: 230px;
@@ -474,13 +488,7 @@ input:checked + .slider:before {
 #CircleSliderId-01 .rs-bg-color {
   background-color: #000000;
 }
- /* #CircleSliderId-01.rs-border  {
-  background-color: #050505;
-  border-radius: 0;
-  margin: 10px auto; */
-/* #CircleSliderId-01 .rs-border.rs-inner{
-  background-color: #010808;
-} */
+
 #CircleSliderId-01 .rs-container{
   box-shadow: 
     0 -10px 5px rgb(85, 138, 236),
@@ -497,12 +505,6 @@ input:checked + .slider:before {
   border-radius: 50%;
   margin: 10px auto;
 }
-/* #CircleSliderId-01 .rs-range-color  {
-  background-color: #000000;
-  stroke-width: 4px;
-  border-radius: 0
-}  */
-
 
 /* ---------temperature 2 ----------*/
 #CircleSliderId-02 .rs-tooltip  {
@@ -533,6 +535,69 @@ input:checked + .slider:before {
 #CircleSliderId-02{
   margin: 5px 0 0 40px;
 }
+#CircleSliderId-02 .rs-bg-color {
+  background-color: #000000;
+}
+
+#CircleSliderId-02 .rs-container{
+  box-shadow: 
+    0 -10px 5px rgb(230, 183, 30),
+    0 10px  10px  rgb(13, 16, 26);
+  border-radius: 50%;
+  margin: 10px auto;
+  border: #000;
+}
+#CircleSliderId-02 .rs-bg-color{
+  background: #fa2c2c;
+  box-shadow: 
+  0 -5px 5px #5a5a5a,
+  0 5px  15px  #f0a61d;
+  border-radius: 50%;
+  margin: 10px auto;
+}
+
+
+#CircleSliderId-02 .rs-tooltip  {
+  font-size: 15px;
+}
+#CircleSliderId-02 .rs-tooltip div  { 
+  text-align: center;
+  background: rgb(85, 66, 193);
+  color: white;
+  border-radius: 4px;
+  padding: 2px 2px 2px 2px;
+}
+#CircleSliderId-02 .rs-handle  {
+  background-color: #00FFF5;
+  
+}
+#CircleSliderId-02 .rs-range-color  {
+  background-color: #00FFF5;
+  stroke-width: 4px;
+
+} 
+/* ------------round slider kitchen ----------*/
+
+#CircleSliderId-03.rs-path-color  { 
+  background-color: #382d5f;
+  border-radius: 0;
+
+}
+#CircleSliderId-03{
+  margin: 5px 0 0 40px;
+}
+#CircleSliderId-03 .rs-bg-color {
+  background-color: #000000;
+}
+#CircleSliderId-03 .rs-bg-color{
+  background: #fa2c2c;
+  box-shadow: 
+  0 -5px 5px #5a5a5a,
+  0 5px  15px  #f0a61d;
+  border-radius: 50%;
+  margin: 10px auto;
+}
+
 #hum-tem{
   display: flex;
   flex-direction: column;
@@ -798,6 +863,58 @@ input:checked + .slider:before {
   -webkit-user-select: none;
   touch-action: manipulation;
 }
+#iconvolume{
+  margin: 5px 10px 10px 30px;
+  gap: 10px;
+  border-radius: 50%;
+
+  width: 40px;
+  height: 40px;
+  border: none;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; 
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  line-height: 1; 
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s,-webkit-box-shadow .2s;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+#iconbell{
+  margin: 5px 10px 10px 30px;
+  gap: 10px;
+  border-radius: 50%;
+
+  width: 40px;
+  height: 40px;
+  border: none;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;  color: #000000;
+  cursor: pointer;
+  display: inline-flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  line-height: 1; 
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s,-webkit-box-shadow .2s;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
 .TV{
   background-image:url(./img/television-tv-png-22246.png) ;
   background-size: 100% 100%;
@@ -884,4 +1001,12 @@ input:checked + .slider:before {
   margin-left: 10px;
   font-weight: 100;
   color: #48bfba;
+}
+#Asmosphere-kt{
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
